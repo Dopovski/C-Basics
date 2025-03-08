@@ -1,0 +1,21 @@
+#include <iostream>
+
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+
+int main() {
+    const double DOGS_FOOD_PRICE = 2.50;
+    const int CAT_FOOD_PRICE = 4;
+
+    int dogsFoodCount, catsFoodCount;
+    cin >> dogsFoodCount >> catsFoodCount;
+
+    double dogsTotalPrice = dogsFoodCount * DOGS_FOOD_PRICE;
+    double catsTotalPrice = catsFoodCount * CAT_FOOD_PRICE;
+
+    double totalPrice = dogsTotalPrice + catsTotalPrice;
+
+    cout << totalPrice << " lv. " << endl;
+}
