@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int totalPages, pagesPerHour, days;
+    cin >> totalPages >> pagesPerHour >> days;
+
+    int totalNeededHours = totalPages / pagesPerHour;
+    int result = totalNeededHours / days;
+
+    cout << result << endl;
+}
