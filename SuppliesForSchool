@@ -1,0 +1,11 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int pens, markers, cleaningAgent, discountPercentage;
+    cin >> pens >> markers >> cleaningAgent >> discountPercentage;
+
+    double cost = (pens * 5.80 + markers * 7.20 + cleaningAgent * 1.20) * (100 - discountPercentage) / 100;
+    cout << cost << endl;
+}
