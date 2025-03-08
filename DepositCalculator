@@ -1,0 +1,12 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double amount, yearlyInterestPrecentage;
+    int termInMonths;
+    cin >> amount >> termInMonths >> yearlyInterestPrecentage;
+
+    double result = amount + 0.01 * termInMonths * amount * yearlyInterestPrecentage / 12;
+    cout << result << endl;
+}
