@@ -1,0 +1,15 @@
+#include <iostream>
+
+using std::endl;
+using std::cout;
+using std::cin;
+
+int main() {
+
+    int sideA, sideB;
+    cin >> sideA >> sideB;
+
+    int area = sideA * sideB;
+
+    cout << area << endl;
+}
