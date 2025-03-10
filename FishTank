@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int width, length, height;
+    double takenPercantage;
+    cin >> width >> length >> height >> takenPercantage;
+
+    double volumeInLiters = 0.001 * width * length * height;
+    double leftVolumeInLiters = (1 - 0.01 * takenPercantage) * volumeInLiters;
+
+    cout << leftVolumeInLiters << endl;
+}
