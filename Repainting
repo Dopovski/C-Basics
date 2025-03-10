@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int nylon, paint, thinner, workHours;
+    cin >> nylon >> paint >> thinner >> workHours;
+
+    double materialsCost = (nylon + 2) * 1.5 + 1.1 * paint * 14.5 + thinner * 5 + 0.4;
+
+    double hoursCost = 0.3 * materialsCost * workHours;
+
+    double totalCost = materialsCost + hoursCost;
+    cout << totalCost << endl;
+}
