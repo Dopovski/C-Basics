@@ -1,0 +1,15 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    float pricePerKiloForVegetables, pricePerKiloForFruits, allKilosOfVegetables, allKilosOfFruits;
+    cin >> pricePerKiloForVegetables >> pricePerKiloForFruits >> allKilosOfVegetables >> allKilosOfFruits;
+
+    float vegetablesPrice = pricePerKiloForVegetables * allKilosOfVegetables;
+    float fruitsPrice = pricePerKiloForFruits * allKilosOfFruits;
+    float totalPrice = vegetablesPrice + fruitsPrice;
+    float totalPriceInEuro = totalPrice / 1.94;
+    cout << fixed << setprecision(2) << totalPriceInEuro << endl;
+}
