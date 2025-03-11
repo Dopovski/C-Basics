@@ -1,0 +1,12 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    float celsius, fahrenheit;
+    cin >> celsius;
+    fahrenheit = static_cast<double>((celsius * 9/5.0) + 32);
+    cout << fixed << setprecision(2) << fahrenheit << endl;
+    return 0;
+}
