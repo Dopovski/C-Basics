@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cmath>
+
+class Angle {
+private:
+    double degrees;
+
+public:
+    Angle(double deg) : degrees(deg) {}
+
+    double getSin() {
+        return sin(degrees * M_PI / 180); // Преобразуваме градуси в радиани
+    }
+
+    double getCos() {
+        return cos(degrees * M_PI / 180); // Преобразуваме градуси в радиани
+    }
+
+    double getTan() {
+        double tanValue = tan(degrees * M_PI / 180); // Преобразуваме градуси в радиани
+        return (degrees == 90 || degrees == 270) ? std::nan("1") : tanValue; // Проверка за тангенса, който не е дефиниран на 90 и 270 градуса
+    }
+};
+
+int main() {
+    double angleInDegrees;
+    std::cout << "Въведете ъгъл в градуси: ";
+    std::cin >> angleInDegrees;
+
+    Angle angle(angleInDegrees);
+
+    std::cout << "Синус: " << angle.getSin() << std::endl;
+    std::cout << "Косинус: " << angle.getCos() << std::endl;
+    std::cout << "Тангенс: " << angle.getTan() << std::endl;
+
+    return 0;
+}
