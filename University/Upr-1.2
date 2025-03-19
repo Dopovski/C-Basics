@@ -1,0 +1,19 @@
+#include <iostream>
+
+class MyClass {
+public:
+    int a;
+    int b;
+
+    void init() {
+        a = 5;
+        b = 8;
+    }
+};
+
+int main() {
+    MyClass c; // Дефинираме обект c
+    c.init();  // Инициализираме обекта
+    std::cout << c.a << " " << c.b << std::endl; // Извеждаме стойностите на a и b
+    return 0;
+}
