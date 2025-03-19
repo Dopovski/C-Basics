@@ -1,0 +1,24 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    float mackerelPriceInKg, spratPriceInKg, kilosOfBonito, kilogramOfSaffron, kilogramOfMussels;
+
+    cin >> mackerelPriceInKg >> spratPriceInKg >> kilosOfBonito >> kilogramOfSaffron >> kilogramOfMussels;
+
+    float priceOfBonito = mackerelPriceInKg + mackerelPriceInKg * 0.60;
+    float sumOfBonito = priceOfBonito * kilosOfBonito;
+
+    float priceOfSaffron = spratPriceInKg + spratPriceInKg * 0.80;
+    float sumOfSaffron = priceOfSaffron * kilogramOfSaffron;
+
+    float sumOfMussels = kilogramOfMussels * 7.5;
+
+    float totalSum = sumOfBonito + sumOfSaffron + sumOfMussels;
+
+
+    cout << fixed << setprecision(2) << totalSum << endl;
+
+    return 0;
+}
