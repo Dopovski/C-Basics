@@ -1,0 +1,14 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    const double EXELENT_GRADE_MIN = 5.50;
+
+    double grade;
+    cin >> grade;
+
+    if (grade >= 5.50) {
+        cout << "Excellent!" << endl;
+    }
+}
