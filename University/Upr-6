@@ -1,0 +1,129 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+const int maxLengthName = 30;
+const int maxPatients = 200;
+
+class Date {
+private:
+    int day;
+    int month;
+    int year;
+
+public:
+    Date(int d = 1, int m = 1, int y = 2000);
+    int getDay() const;
+    int getMonth() const;
+    int getYear() const;
+    void setDay(int d);
+    void setMonth(int m);
+    void setYear(int y);
+    void print() const;
+};
+
+Date::Date(int d, int m, int y) : day(d), month(m), year(y) {}
+
+int Date::getDay() const { return day; }
+int Date::getMonth() const { return month; }
+int Date::getYear() const { return year; }
+void Date::setDay(int d) { day = d; }
+void Date::setMonth(int m) { month = m; }
+void Date::setYear(int y) { year = y; }
+void Date::print() const {
+    cout << day << "." << month << "." << year;
+}
+
+class Patient {
+private:
+    string name;
+    Date birthdate;
+    int visits;
+
+public:
+    Patient(string n = "", Date bd = Date(), int v = 0);
+    string getName() const;
+    int getVisits() const;
+    void setName(string n);
+    void setBirthdate(Date bd);
+    void setVisits(int v);
+    void print() const;
+};
+
+Patient::Patient(string n, Date bd, int v) : name(n), birthdate(bd), visits(v) {}
+string Patient::getName() const { return name; }
+int Patient::getVisits() const { return visits; }
+void Patient::setName(string n) { name = n; }
+void Patient::setBirthdate(Date bd) { birthdate = bd; }
+void Patient::setVisits(int v) { visits = v; }
+void Patient::print() const {
+    cout << "Name: " << name << ", Birthdate: ";
+    birthdate.print();
+    cout << ", Visits: " << visits << endl;
+}
+
+double calculateAverageVisits(const vector<Patient>& patients) {
+    if (patients.empty()) return 0.0;
+    int totalVisits = 0;
+    for (const auto& patient : patients) {
+        totalVisits += patient.getVisits();
+    }
+    return static_cast<double>(totalVisits) / patients.size();
+}
+
+void findPatientsWithMoreVisits(const vector<Patient>& patients, int minVisits) {
+    cout << "Patients with more than " << minVisits << " visits:" << endl;
+    bool found = false;
+    for (const auto& patient : patients) {
+        if (patient.getVisits() > minVisits) {
+            patient.print();
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "No patients found with more than " << minVisits << " visits." << endl;
+    }
+}
+
+int main() {
+    vector<Patient> patients;
+    int numPatients;
+
+    cout << "Enter the number of patients: ";
+    cin >> numPatients;
+
+    if(numPatients > maxPatients) {
+        numPatients = maxPatients;
+        cout << "The maximum number of patients is " << maxPatients << ". Adjusting input." << endl;
+    }
+
+    for(int i = 0; i < numPatients; ++i) {
+        string name;
+        int day, month, year, visits;
+
+        cout << "Enter name for patient " << i + 1 << ": ";
+        cin >> ws;
+        getline(cin, name);
+
+        cout << "Enter birth date (day month year): ";
+        cin >> day >> month >> year;
+
+        cout << "Enter number of visits: ";
+        cin >> visits;
+
+        patients.push_back(Patient(name, Date(day, month, year), visits));
+    }
+
+    double avgVisits = calculateAverageVisits(patients);
+    cout << "Average number of visits: " << avgVisits << endl;
+
+    int specifiedVisits;
+    cout << "Enter the minimum number of visits to check: ";
+    cin >> specifiedVisits;
+
+    findPatientsWithMoreVisits(patients, specifiedVisits);
+
+    return 0;
+}
