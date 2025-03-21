@@ -1,0 +1,22 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+    double currentRecordInSeconds, distantInMeters, timePerMeterInSeconds;
+    cin>>currentRecordInSeconds>>distantInMeters>>timePerMeterInSeconds;
+
+    double requiredTimeInSeconds = distantInMeters * timePerMeterInSeconds
+    + floor(distantInMeters /15)* 12.5;
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+
+    if (requiredTimeInSeconds < currentRecordInSeconds) {
+        cout << "Yes, he succeeded! The new world record is " << requiredTimeInSeconds <<" seconds." << endl;
+    }
+    else {
+        cout << "No, he failed! He was "<< requiredTimeInSeconds - currentRecordInSeconds <<" seconds slower." << endl;
+    }
+}
