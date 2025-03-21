@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double budget;
+    int gpu, cpu, ram;
+    cin>>budget>>gpu>>cpu>>ram;
+
+    double GpuCosts = gpu * 250;
+    double CpuCosts = cpu * 0.35 * GpuCosts;
+    double RamCosts =  ram * 0.1 * GpuCosts;
+    double totalCosts = GpuCosts + CpuCosts + RamCosts;
+
+    if (gpu > cpu) {
+        totalCosts = 0.85 * totalCosts;
+    }
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    if (budget >= totalCosts) {
+        cout<< "You have " << budget - totalCosts << " leva left!"<< endl;
+    }
+    else {
+        cout<< "Not enough money! You need "<<totalCosts - budget <<" leva more!"<< endl;
+    }
+}
