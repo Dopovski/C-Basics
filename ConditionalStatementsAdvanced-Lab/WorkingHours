@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    double hour;
+    cin >> hour;
+
+    string weekDay;
+    cin >> weekDay;
+    if (hour < 10 || hour > 18 || weekDay == "Sunday") {
+        cout << "closed" << endl;
+    }
+    else {
+        cout << "open" << endl;
+    }
+}
