@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string weekDay;
+    cin >> weekDay;
+
+    if (weekDay == "Monday" || weekDay == "Tuesday" || weekDay == "Friday") {
+        cout << "12";
+    }
+    else if (weekDay == "Wednesday" || weekDay == "Thursday") {
+        cout << "14";
+    }
+    else {
+        cout << "16";
+    }
+}
