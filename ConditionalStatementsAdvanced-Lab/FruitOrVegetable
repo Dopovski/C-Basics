@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    string fruitOrVegetable;
+    cin >> fruitOrVegetable;
+    if (fruitOrVegetable == "banana" || fruitOrVegetable == "apple" || fruitOrVegetable == "kiwi" || fruitOrVegetable == "cherry" || fruitOrVegetable == "lemon" || fruitOrVegetable == "grapes")
+    {
+        cout << "fruit";
+    }
+    else if (fruitOrVegetable == "tomato" || fruitOrVegetable == "cucumber" || fruitOrVegetable == "pepper" || fruitOrVegetable == "carrot")
+    {
+        cout << "vegetable";
+    }
+    else {
+        cout << "unknown";
+    }
+}
