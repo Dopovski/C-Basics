@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+  string flower;
+  cin >> flower;
+
+  int quantity;
+  cin >> quantity;
+
+  int budget;
+  cin >> budget;
+
+  double price = 0;
+
+  if (flower == "Roses") {
+    price = 5;
+    if (quantity > 80) {
+      price -= price * 0.1;
+    }
+  }
+  else if (flower == "Dahlias") {
+    price = 3.80;
+    if (quantity > 90) {
+      price -= price * 0.15;
+    }
+  }
+  else if (flower == "Tulips") {
+    price = 2.80;
+    if (quantity > 80) {
+      price -= price * 0.15;
+    }
+  }
+  else if (flower == "Narcissus") {
+    price = 3;
+    if (quantity < 120) {
+      price += price * 0.15;
+    }
+  }
+  else if (flower == "Gladiolus") {
+    price = 2.50;
+    if (quantity < 80) {
+      price += price * 0.20;
+    }
+  }
+  cout.setf(ios::fixed);
+  cout.precision(2);
+  if (budget >= price * quantity) {
+    cout << "Hey, you have a great garden with " << quantity << " " << flower << " and " << budget - price * quantity << " leva left." << endl;
+  }
+  else {
+    cout << "Not enough money, you need " << price * quantity - budget << " leva more." << endl;
+  }
+}
