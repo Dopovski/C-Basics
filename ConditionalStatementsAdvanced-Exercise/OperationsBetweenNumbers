@@ -1,0 +1,60 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int firstNumber, secondNumber;
+    cin >> firstNumber >> secondNumber;
+
+    string operation;
+    cin >> operation;
+
+    if ( operation == "+" ) {
+        int sum = firstNumber + secondNumber;
+        if (sum % 2 == 0) {
+            cout << firstNumber << " + " << secondNumber << " = " << sum << " - even"<< endl;
+        }
+        else {
+            cout << firstNumber << " + " << secondNumber << " = " << sum << " - odd" << endl;
+        }
+    }
+    else if ( operation == "-" ) {
+        int diff = firstNumber - secondNumber;
+        if (diff % 2 == 0) {
+            cout << firstNumber << " - " << secondNumber << " = " << diff << " - even" << endl;
+        }
+        else {
+            cout << firstNumber << " - " << secondNumber << " = " << diff << " - odd" << endl;
+        }
+    }
+    else if ( operation == "*" ) {
+            int product = firstNumber * secondNumber;
+        if (product % 2 == 0) {
+                cout << firstNumber << " * " << secondNumber << " = " << product <<" - even" << endl;
+            }
+            else {
+                cout << firstNumber << " * " << secondNumber << " = " << product << " - odd" << endl;
+            }
+    }
+    else if ( operation == "/" ) {
+        if (secondNumber == 0) {
+            cout << "Cannot divide " << firstNumber << " by zero" << endl;
+        }
+        else {
+            double division = (firstNumber * 1.0) / secondNumber;
+            cout.setf(ios::fixed);
+                cout << firstNumber << " / " << secondNumber << " = " << setprecision(2) << division << endl;
+            }
+            }
+    else if ( operation == "%" ) {
+        if (secondNumber == 0) {
+            cout << "Cannot divide " << firstNumber << " by zero" << endl;
+        }
+        else {
+            int remainder = firstNumber % secondNumber;
+            cout << firstNumber << " % " << secondNumber << " = " << remainder << endl;
+        }
+    }
+}
