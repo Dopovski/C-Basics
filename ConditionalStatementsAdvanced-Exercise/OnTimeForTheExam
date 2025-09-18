@@ -1,0 +1,50 @@
+#include <iostream>
+#include <iomanip> // за setw() и setfill()
+#include <cmath>   // за abs()
+
+using namespace std;
+
+int main() {
+    int examHour, examMinute;
+    int arrivalHour, arrivalMinute;
+
+    cin >> examHour >> examMinute;
+    cin >> arrivalHour >> arrivalMinute;
+
+    // Преобразуваме всичко в минути от 00:00 за по-лесно смятане
+    int examTime = examHour * 60 + examMinute;
+    int arrivalTime = arrivalHour * 60 + arrivalMinute;
+
+    int diff = arrivalTime - examTime; // положително -> закъснение, отрицателно -> по-рано
+
+    if (diff > 0) {
+        cout << "Late" << endl;
+    } else if (abs(diff) <= 30) {
+        cout << "On time" << endl;
+    } else {
+        cout << "Early" << endl;
+    }
+
+    if (diff != 0) {
+        int hours = abs(diff) / 60;
+        int minutes = abs(diff) % 60;
+
+        if (hours == 0) {
+            if (diff < 0) {
+                cout << minutes << " minutes before the start" << endl;
+            } else {
+                cout << minutes << " minutes after the start" << endl;
+            }
+        } else {
+            // Печатаме hh:mm (минутите с водеща нула)
+            cout << hours << ":" << setw(2) << setfill('0') << minutes;
+            if (diff < 0) {
+                cout << " hours before the start" << endl;
+            } else {
+                cout << " hours after the start" << endl;
+            }
+        }
+    }
+
+    return 0;
+}
