@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    string month;
+    int accomodationDays;
+    cin >> month >> accomodationDays;
+
+    double studioTotalCost = 0.00;
+    double apartmentTotalCost = 0.00;
+
+    if (month == "May" || month == "October")
+    {
+        studioTotalCost = accomodationDays * 50.00;
+        apartmentTotalCost = accomodationDays * 65.00;
+
+        if (accomodationDays > 14)
+        {
+            studioTotalCost *= 0.7;
+        }
+        else if (accomodationDays > 7)
+        {
+            studioTotalCost *= 0.95;
+        }
+    }
+    else if (month == "June" || month == "September")
+    {
+        studioTotalCost = accomodationDays * 75.20;
+        apartmentTotalCost = accomodationDays * 68.70;
+
+        if (accomodationDays > 14)
+        {
+            studioTotalCost *= 0.8;
+        }
+    }
+    else if (month == "July" || month == "August")
+    {
+        studioTotalCost = accomodationDays * 76.00;
+        apartmentTotalCost = accomodationDays * 77.00;
+    }
+
+    if (accomodationDays > 14)
+    {
+        apartmentTotalCost *= 0.9;
+    }
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    
+    cout << "Apartment: " << apartmentTotalCost << " lv." << endl;
+    cout << "Studio: " << studioTotalCost << " lv.";
+
+    return 0;
+}
