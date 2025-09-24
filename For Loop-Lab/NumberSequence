@@ -1,0 +1,23 @@
+#include <iostream>
+#include <climits>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int max = INT_MIN;
+    int min = INT_MAX;
+    for (int i = 1; i <= n; i++) {
+        int value;
+        cin >> value;
+        if (value < min) {
+            min = value;
+        }
+        if (value > max) {
+            max = value;
+        }
+    }
+    cout << "Max number: " << max << endl;
+    cout << "Min number: " << min << endl;
+}
