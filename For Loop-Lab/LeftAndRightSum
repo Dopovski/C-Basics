@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int n;
+    if (!(cin >> n)) return 0;
+    vector<int> vals;
+    int x;
+    while (cin >> x) vals.push_back(x);
+
+    if (vals.empty()) {
+        cout << "No numbers provided after n\n";
+        return 0;
+    }
+    int total;
+    if ((int)vals.size() == n) {
+        total = n;
+    } else if ((int)vals.size() == 2 * n) {
+        total = 2 * n;
+    } else {
+        total = vals.size();
+    }
+
+    int half = total / 2;
+    int leftSum = 0, rightSum = 0;
+    for (int i = 0; i < half; ++i) leftSum += vals[i];
+    for (int i = half; i < total; ++i) rightSum += vals[i];
+
+    int diff = abs(leftSum - rightSum);
+    if (diff == 0) cout << "Yes, sum = " << leftSum << endl;
+    else cout << "No, diff = " << diff << endl;
+
+    return 0;
+}
