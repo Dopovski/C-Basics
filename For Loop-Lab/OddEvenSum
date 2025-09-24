@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath> 
+using namespace std;
+
+int main()
+{
+    int countNumbers;
+    cin >> countNumbers;
+
+    int oddSum = 0;
+    int evenSum = 0;
+
+    for (int position = 1; position <= countNumbers; position++)
+    {
+        int value;
+        cin >> value;
+
+        if (position % 2 == 0) {
+            evenSum += value;
+        }
+        else {
+            oddSum += value;
+        }
+    }
+
+    int diff = abs(oddSum - evenSum);
+    if (diff == 0)
+    {
+        cout << "Yes" << endl;
+        cout << "Sum = " << oddSum << endl;
+    }
+    else
+    {
+        cout << "No" << endl;
+        cout << "Diff = " << diff << endl;
+    }
+    return 0;
+}
