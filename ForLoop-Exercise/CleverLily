@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int age, toyPrice;
+    double price;
+    cin >> age >> price >> toyPrice;
+
+    int toys = 0;
+    int money = 0;
+    int sumMoney = 10;
+
+    for (int i = 1; i <= age; i++) {
+        if (i % 2 == 0) {
+            money += sumMoney;
+            sumMoney += 10;
+            money -= 1;
+        }
+        else if (i % 2 != 0) {
+            toys++;
+        }
+    }
+    int savedMoney = money + (toys * toyPrice);
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    if (savedMoney >= price) {
+        cout << "Yes! " << savedMoney - price << endl;
+    }
+    else {
+        cout << "No! " << price - savedMoney << endl;
+    }
+}
