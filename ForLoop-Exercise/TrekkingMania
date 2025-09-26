@@ -1,0 +1,56 @@
+#include <iomanip>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int climberGroupsCount;
+    cin >> climberGroupsCount;
+
+    int totalClimbersCount = 0;
+    int climbersMoussalla = 0;
+    int climbersMontBlanc = 0;
+    int climbersKilimanjaro = 0;
+    int climbersK2 = 0;
+    int climbersEverest = 0;
+
+    for (int group = 1; group <= climberGroupsCount; group++)
+    {
+        int climbersCount;
+        cin >> climbersCount;
+
+        totalClimbersCount += climbersCount;
+
+        if (climbersCount <= 5)
+        {
+            climbersMoussalla += climbersCount;
+        }
+        else if (climbersCount <= 12)
+        {
+            climbersMontBlanc += climbersCount;
+        }
+        else if (climbersCount <= 25)
+        {
+            climbersKilimanjaro += climbersCount;
+        }
+        else if (climbersCount <= 40)
+        {
+            climbersK2 += climbersCount;
+        }
+        else
+        {
+            climbersEverest += climbersCount;
+        }
+    }
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << 100.00 * climbersMoussalla / totalClimbersCount << "%" << std::endl;
+    cout << 100.00 * climbersMontBlanc / totalClimbersCount << "%" << std::endl;
+    cout << 100.00 * climbersKilimanjaro / totalClimbersCount << "%" << std::endl;;
+    cout << 100.00 * climbersK2 / totalClimbersCount << "%" << std::endl;;
+    cout << 100.00 * climbersEverest / totalClimbersCount << "%" << std::endl;;
+
+    return 0;
+}
