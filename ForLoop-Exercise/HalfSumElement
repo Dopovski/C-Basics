@@ -1,0 +1,35 @@
+#include <iostream>
+#include <climits>
+#include <cmath>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+
+    int max = INT_MIN;
+
+    int sum = 0;
+
+    for (int i = 1; i <= n; i++) {
+
+        int value;
+        cin >> value;
+
+        if (value > max) {
+            max = value;
+        }
+
+        sum += value;
+    }
+
+    int Other = sum - max;
+
+    if (max == Other) {
+        cout << "Yes" << endl;
+        cout << "Sum = " << max << endl;
+    }
+    else {
+        cout << "No" << endl;
+        cout << "Diff = " << abs(max - Other) << endl;
+    }
+}
