@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+int main() {
+        int n;
+        cin >> n;
+
+        int group1 = 0;
+        int group2 = 0;
+        int group3 = 0;
+        int group4 = 0;
+        int group5 = 0;
+
+        for (int i = 1; i <= n; i++) {
+            int value;
+            cin >> value;
+            if (value < 200) {
+                group1++;
+            }
+            else if (value >= 200 && value <= 399) {
+                group2++;
+            }
+            else if (value >= 400 && value <= 599) {
+                group3++;
+            }
+            else if (value >= 600 && value <= 799) {
+                group4++;
+            }
+            else if (value >= 800) {
+                group5++;
+            }
+        }
+    double p1 = (group1 * 1.0 / n) * 100 ;
+    double p2 = (group2 * 1.0 / n) * 100 ;
+    double p3 = (group3 * 1.0 / n) * 100 ;
+    double p4 = (group4 * 1.0 / n) * 100 ;
+    double p5 = (group5 * 1.0 / n) * 100 ;
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << p1 << "%" << endl;
+    cout << p2 << "%" << endl;
+    cout << p3 << "%" << endl;
+    cout << p4 << "%" << endl;
+    cout << p5 << "%" << endl;
+}
