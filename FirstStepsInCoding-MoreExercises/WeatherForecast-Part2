@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double temperature;
+    cin >> temperature;
+
+    if (temperature >= 26.00 && temperature < 35.00) {
+        cout << "Hot";
+    }
+    else if (temperature <= 25.90 && temperature >= 20.10) {
+        cout << "Warm";
+    }
+    else if (temperature <= 20.00 && temperature >= 15.00) {
+        cout << "Mild";
+    }
+    else if (temperature <= 14.90 && temperature >= 12.00) {
+        cout << "Cool";
+    }
+    else if (temperature <= 11.90 && temperature >= 5.00) {
+        cout << "Cold";
+    }
+    else {
+        cout << "unknown";
+    }
+}
