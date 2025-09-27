@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    float v, p1, p2;
+    cin >> v >> p1 >> p2;
+    double h;
+    cin >> h;
+
+    double filled = h * p1 + h * p2; // total water from both pipes
+
+    if (filled <= v) {
+        double percentFull = (filled / v) * 100;
+        double pipe1Percent = (h * p1 / filled) * 100;
+        double pipe2Percent = (h * p2 / filled) * 100;
+
+        cout << "The pool is " << percentFull << "% full. "
+             << "Pipe 1: " << pipe1Percent << "%. "
+             << "Pipe 2: " << pipe2Percent << "%." << endl;
+    } else {
+        cout << "For " << h << " hours the pool overflows with "
+             << filled - v << " liters." << endl;
+    }
+
+    return 0;
+}
