@@ -1,0 +1,27 @@
+#include <iomanip>
+#include <iostream>
+using namespace std;
+int main()
+{
+    double x, y, h;
+    cin >> x >> y >> h;
+
+    double wallArea = x * y;
+    double window = 1.5 * 1.5;
+    double both = 2 * wallArea - 2 * window;
+    double back = x * x;
+    double door = 1.2 * 2;
+    double all = 2 * back - door;
+    double total = both + all;
+    double last = total / 3.4;
+
+    double roof = 2 * (x * y);
+    double triangle = 2 * (x * h / 2);
+    double full = roof + triangle;
+    double last2 = full / 4.3;
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << last << endl;
+    cout << last2 << endl;
+}
