@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int dayOff;
+    cin >> dayOff;
+
+    int dayOffWork = dayOff * 127;           // minutes played on days off
+    int dayOnWork = (365 - dayOff) * 63;     // minutes played on workdays
+    int total = dayOffWork + dayOnWork;      // total minutes played in a year
+
+    int diff = abs(30000 - total);           // difference from 30,000 minutes
+    int hours = diff / 60;                   // convert to hours
+    int minutes = diff % 60;                 // remaining minutes
+
+    if (total > 30000) {
+        cout << "Tom will run away" << endl;
+        cout << hours << " hours and " << minutes << " minutes more for play" << endl;
+    } else {
+        cout << "Tom sleeps well" << endl;
+        cout << hours << " hours and " << minutes << " minutes less for play" << endl;
+    }
+
+    return 0;
+}
