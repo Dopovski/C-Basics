@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string fuel;
+    cin >> fuel;
+    int n;
+    cin >> n;
+
+    string fuelLower = "";
+    for (char c : fuel) {
+        fuelLower += tolower(c);
+    }
+
+    if ((fuelLower == "diesel" || fuelLower == "gasoline" || fuelLower == "gas") && n >= 25) {
+        cout << "You have enough " << fuelLower << "." << endl;
+    }
+    else if ((fuelLower == "diesel" || fuelLower == "gasoline" || fuelLower == "gas") && n < 25) {
+        cout << "Fill your tank with " << fuelLower << "!" << endl;
+    }
+    else {
+        cout << "Invalid fuel!" << endl;
+    }
+
+    return 0;
+}
