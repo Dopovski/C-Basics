@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    int magnolia, ziwa, rose, cactus;
+    cin >> magnolia >> ziwa >> rose >> cactus;
+    double gift;
+    cin >> gift;
+
+    double magnoliaPrice = 3.25;
+    double ziwaPrice = 4.00;
+    double rosePrice = 3.50;
+    double cactusPrice = 8.00;
+    double taxRate = 0.05;
+    
+    double totalIncome = magnolia * magnoliaPrice + ziwa * ziwaPrice + 
+                        rose * rosePrice + cactus * cactusPrice;
+    double netIncome = totalIncome * (1 - taxRate);
+    
+    if (netIncome < gift) {
+        int borrow = ceil(gift - netIncome);
+        cout << "She will have to borrow " << borrow << " leva." << endl;
+    } else {
+        int left = floor(netIncome - gift);
+        cout << "She is left with " << left << " leva." << endl;
+    }
+    
+    return 0;
+}
