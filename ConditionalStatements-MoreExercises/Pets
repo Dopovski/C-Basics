@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int days, food;
+    cin >> days >> food;
+
+    double foodForDog, foodForCat, foodForTurtle;
+    cin >> foodForDog >> foodForCat >> foodForTurtle;
+
+    double totalFood = days * (foodForDog + foodForCat + (foodForTurtle / 1000.0));
+
+    cout.setf(ios::fixed);
+    cout.precision(0);
+
+    if (food >= totalFood) {
+        cout << floor(fabs(food - totalFood)) << " kilos of food left." << endl;
+    } else {
+        cout << ceil(fabs(totalFood - food)) << " more kilos of food are needed." << endl;
+    }
+
+    return 0;
+}
