@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    double gasoline = 2.22;
+    double diesel = 2.33;
+    double gas = 0.93;
+
+    string fuel;
+    cin >> fuel;
+    double liters;
+    cin >> liters;
+    string clubCard;
+    cin >> clubCard;
+
+    double price = 0.0;
+
+    if (fuel == "Gas") {
+        price = gas;
+    } else if (fuel == "Gasoline") {
+        price = gasoline;
+    } else if (fuel == "Diesel") {
+        price = diesel;
+    }
+    
+    if (clubCard == "Yes") {
+        if (fuel == "Gas") {
+            price -= 0.08;
+        } else if (fuel == "Gasoline") {
+            price -= 0.18;
+        } else if (fuel == "Diesel") {
+            price -= 0.12;
+        }
+    }
+
+    double total = liters * price;
+    
+    if (liters > 25) {
+        total *= 0.90; 
+    } else if (liters >= 20) {
+        total *= 0.92; 
+    }
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << total << " lv." << endl;
+
+    return 0;
+}
