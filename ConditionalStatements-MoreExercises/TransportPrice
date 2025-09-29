@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    string day;
+    cin >> day;
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+
+    double price = 0.0;
+
+    // Влак – ако разстоянието е >= 100 км
+    if (n >= 100) {
+        price = n * 0.06;
+    }
+    // Автобус – ако разстоянието е >= 20 км
+    else if (n >= 20) {
+        price = n * 0.09;
+    }
+    // Такси – ако разстоянието е < 20 км (или няма друг транспорт)
+    else {
+        if (day == "day") {
+            price = 0.70 + 0.79 * n;
+        } 
+        else if (day == "night") {
+            price = 0.70 + 0.90 * n;
+        }
+        else {
+            cout << "unknown";
+            return 0;
+        }
+    }
+
+    cout << price;
+    return 0;
+}
