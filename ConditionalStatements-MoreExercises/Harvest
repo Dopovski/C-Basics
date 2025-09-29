@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+  double x;
+  cin >> x;
+  double y;
+  cin >> y;
+  double z;
+  cin >> z;
+  double workers;
+  cin >> workers;
+
+  double total = x * y;
+  double wine = (total * 0.40) / 2.5;
+
+    cout.setf(ios::fixed);
+     cout.precision(0);
+
+  if (wine >= z) {
+    double yes = wine - z;
+    double wineForWorkers = yes / workers;
+
+    cout << "Good harvest this year! Total wine: "
+         << static_cast<double>(floor(wine)) << " liters." << endl;
+    cout << static_cast<double>(ceil(yes)) << " liters left -> "
+         << static_cast<double>(ceil(wineForWorkers)) << " liters per person." << endl;
+  } else {
+      cout << "It will be a tough winter! More "
+           << static_cast<double>(round(z - wine))
+           << " liters wine needed." << endl;
+  }
+
+  return 0;
+}
