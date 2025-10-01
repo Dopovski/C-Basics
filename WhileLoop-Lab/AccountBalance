@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    double total = 0.0;
+    string input;
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+
+    while (cin >> input && input != "NoMoreMoney") {
+        double number = stod(input);
+
+        if (number < 0) {
+            cout << "Invalid operation!" << endl;
+            break;
+        }
+
+        total += number;
+        cout << "Increase: " << number << endl;
+    }
+
+    cout << "Total: " << total << endl;
+    return 0;
+}
