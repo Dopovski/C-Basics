@@ -1,0 +1,17 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int targetNumber;
+    cin >> targetNumber;
+
+    int sum = 0;
+
+    while (sum < targetNumber) {
+        int number;
+        cin >> number;
+        sum += number;
+    }
+    cout << sum;
+}
