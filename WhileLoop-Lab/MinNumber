@@ -1,0 +1,19 @@
+#include <iostream>
+#include <climits>
+#include <string>
+
+using namespace std;
+
+int main() {
+
+    int minNumber = INT_MAX;
+
+    string input;
+    while (cin >> input && input != "Stop") {
+        int number = stoi(input);
+        if (number < minNumber) {
+            minNumber = number;
+        }
+    }
+    cout << minNumber << endl;
+}
