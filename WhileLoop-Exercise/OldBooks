@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string book;
+    getline(cin, book);
+
+    bool success = false;
+
+    int count = 0;
+
+    string input;
+    while( getline(cin, input) && input != "No More Books") {
+        if (input == book) {
+            success = true;
+            break;
+        }
+        count++;
+    }
+    if (success) {
+        cout << "You checked "  << count << " books and found it." << endl;
+    } else {
+        cout << "The book you search is not here!" << endl;
+        cout << "You checked " << count << " books." << endl;
+    }
+}
