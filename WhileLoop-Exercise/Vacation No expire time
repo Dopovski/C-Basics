@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    double needed, available;
+    cin >> needed >> available;
+
+    if (available >= needed) {
+        cout << "You saved the money for 0 days." << endl;
+        return 0;
+    }
+
+    string action;
+    double amount;
+    int days = 0;
+    int consecutiveSpend = 0;
+
+    while (cin >> action >> amount) {
+        days++;
+
+        if (action == "spend") {
+            consecutiveSpend++;
+            available -= amount;
+            if (available < 0) available = 0;
+        } else if (action == "save") {
+            consecutiveSpend = 0;
+            available += amount;
+        }
+
+        if (consecutiveSpend >= 5) {
+            cout << "You can't save the money." << endl;
+            cout << days << endl;
+            return 0;
+        }
+
+        if (available >= needed) {
+            cout << "You saved the money for " << days << " days." << endl;
+            return 0;
+        }
+    }
+
+    return 0;
+}
