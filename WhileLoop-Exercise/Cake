@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int h, n;
+    cin >> h >> n;
+
+    int piece = h * n;
+
+    while (piece >= 0) {
+        string input;
+        cin >> input;
+
+        if (input == "STOP") {
+            break;
+        }
+        int take = stoi(input);
+        piece -= take;
+    }
+    if (piece >= 0) {
+        cout << piece << " pieces are left." << endl;
+    }
+    else {
+        cout << "No more cake left! You need " << abs(piece) << " pieces more." << endl;
+    }
+}
