@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int w, h, l;
+    cin >> w >> h >> l;
+
+    int space = w * h * l;
+
+    while (true) {
+        string input;
+        cin >> input;
+
+        if (input == "Done") {
+            cout << space << " Cubic meters left." << endl;
+            break;
+        }
+
+        int boxes = stoi(input);
+        space -= boxes;
+
+        if (space < 0) {
+            cout << "No more free space! You need " << abs(space) << " Cubic meters more." << endl;
+            break;
+        }
+    }
+}
