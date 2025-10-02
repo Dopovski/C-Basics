@@ -1,0 +1,41 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    int maxGrades;
+    cin >> maxGrades;
+
+    string input, lastProblem;
+
+    bool success = true;
+    int count = 0, sum = 0, total = 0;
+
+    while (getline(cin.ignore(), input) && input != "Enough") {
+        int grade;
+        cin >> grade;
+
+        sum += grade;
+        total++;
+        lastProblem = input;
+
+        if (grade <= 4) {
+            count++;
+        }
+
+        if (maxGrades == count) {
+            success = false;
+            break;
+        }
+    }
+    if (success) {
+        cout.setf(ios::fixed);
+        cout.precision(2);
+
+        cout << "Average score: " << 1.0 * sum / total << endl;
+        cout << "Number of problems: " << total << endl;
+        cout << "Last problem: " << lastProblem << endl;
+    }
+    else {
+        cout << "You need a break, " << count << " poor grades.";
+    }
+}
