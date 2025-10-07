@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int floor, rooms;
+    cin >> floor >> rooms;
+
+    for (int i = floor; i >= 1; i--) {
+        for (int j = 0; j < rooms; j++) {
+            if (i == floor) {
+                cout << "L" << i << j << " ";
+            }
+            else if (i % 2 == 0) {
+                cout << "O" << i << j << " ";
+            }
+            else {
+                cout << "A" << i << j << " ";
+            }
+        }
+        cout << endl;  
+    }
+}
