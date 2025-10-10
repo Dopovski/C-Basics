@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    for (int i = 1111; i <= 9999; i++) {
+        int units = i % 10;
+        int tens = (i / 10) % 10;
+        int hundreds = (i / 100) % 10;
+        int thousands = i / 1000;
+
+        bool isValidU = units != 0 && n % units == 0;
+        bool isValidT = tens != 0 && n % tens == 0;
+        bool isValidH = hundreds != 0 && n % hundreds == 0;
+        bool isValidTh = thousands != 0 && n % thousands == 0;
+
+        if (isValidU && isValidT && isValidH && isValidTh) {
+            cout << i << " "; 
+        }
+    }
+
+    cout << endl; 
+}
