@@ -1,0 +1,50 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main() {
+    double budget;
+    string category;
+    int people;
+
+    cin >> budget >> category >> people;
+
+    double transportPercent = 0.0;
+
+    // Определяме процента за транспорт
+    if (people >= 1 && people <= 4) {
+        transportPercent = 0.75;
+    } else if (people <= 9) {
+        transportPercent = 0.60;
+    } else if (people <= 24) {
+        transportPercent = 0.50;
+    } else if (people <= 49) {
+        transportPercent = 0.40;
+    } else {
+        transportPercent = 0.25;
+    }
+
+    double moneyForTickets = budget * (1 - transportPercent);
+
+    double ticketPrice = 0.0;
+    if (category == "VIP") {
+        ticketPrice = 499.99;
+    } else if (category == "Normal") {
+        ticketPrice = 249.99;
+    }
+
+    double totalTicketCost = ticketPrice * people;
+
+    cout << fixed << setprecision(2);
+
+    if (moneyForTickets >= totalTicketCost) {
+        double moneyLeft = moneyForTickets - totalTicketCost;
+        cout << "Yes! You have " << moneyLeft << " leva left." << endl;
+    } else {
+        double moneyNeeded = totalTicketCost - moneyForTickets;
+        cout << "Not enough money! You need " << moneyNeeded << " leva." << endl;
+    }
+
+    return 0;
+}
