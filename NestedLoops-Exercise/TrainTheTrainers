@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <limits>
+using namespace std;
+
+int main() {
+    int countJury;
+    cin >> countJury;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+
+    double sumAll = 0;
+    int countAll = 0;
+
+    string name;
+    while (getline(cin, name) && name != "Finish") {
+        double sum = 0;
+
+        for (int i = 0; i < countJury; i++) {
+            double grade;
+            cin >> grade;
+            sum += grade;
+            sumAll += grade;
+            countAll++;
+        }
+
+        double averageGrade = sum / countJury;
+        cout << name << " - " << averageGrade << "." << endl;
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    double averageAll = sumAll / countAll;
+    cout << "Student's final assessment is " << averageAll << "." << endl;
+
+    return 0;
+}
