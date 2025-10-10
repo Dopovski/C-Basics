@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    string movieName;
+    int totalTickets = 0;
+    int studentTickets = 0;
+    int standardTickets = 0;
+    int kidTickets = 0;
+
+    while (true) {
+        getline(cin, movieName);
+        if (movieName == "Finish") {
+            break;
+        }
+
+        int freeSeats;
+        cin >> freeSeats;
+
+        int soldTickets = 0;
+
+        string ticketType;
+        while (soldTickets < freeSeats) {
+            cin >> ticketType;
+            if (ticketType == "End") {
+                break;
+            }
+
+            soldTickets++;
+            totalTickets++;
+
+            if (ticketType == "student") {
+                studentTickets++;
+            } else if (ticketType == "standard") {
+                standardTickets++;
+            } else if (ticketType == "kid") {
+                kidTickets++;
+            }
+        }
+
+        double percentFull = (soldTickets * 100.0) / freeSeats;
+        cout << fixed << setprecision(2);
+        cout << movieName << " - " << percentFull << "% full." << endl;
+
+        cin.ignore(); // за да изчистим новия ред след cin
+    }
+
+    cout << "Total tickets: " << totalTickets << endl;
+
+    if (totalTickets > 0) {
+        cout << fixed << setprecision(2);
+        cout << (studentTickets * 100.0 / totalTickets) << "% student tickets." << endl;
+        cout << (standardTickets * 100.0 / totalTickets) << "% standard tickets." << endl;
+        cout << (kidTickets * 100.0 / totalTickets) << "% kids tickets." << endl;
+    }
+
+    return 0;
+}
