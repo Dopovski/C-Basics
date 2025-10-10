@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int firstNumber, secondNumber;
+    cin >> firstNumber >> secondNumber;
+
+    for (int i = firstNumber; i <= secondNumber; i++) {
+        int firstDigit = i / 100000;
+        int secondDigit = (i / 10000) % 10;
+        int thirdDigit = (i / 1000) % 10;
+        int fourthDigit = (i / 100) % 10;
+        int fifthDigit = (i / 10) % 10;
+        int sixthDigit = i % 10;
+        int sumEven = secondDigit + fourthDigit + sixthDigit;
+        int sumOdd = firstDigit + thirdDigit + fifthDigit;
+        if (sumEven == sumOdd) {
+            cout << i << " ";
+        }
+    }
+}
