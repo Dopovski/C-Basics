@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double w, h;
+    cin >> w >> h;
+
+    // Преобразуване в сантиметри
+    double width = w * 100;
+    double height = h * 100;
+
+    // Изчисляване на редове и бюра в ред
+    int rows = width / 120;
+    int desksPerRow = (height - 100) / 70;
+
+    int totalSeats = rows * desksPerRow - 3;
+
+    cout << totalSeats << endl;
+
+    return 0;
+}
