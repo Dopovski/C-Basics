@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    double x, n;
+    int length = 384400;
+    int timeOnMoon = 3;
+    double avrageSpeed;
+    cin >> avrageSpeed;
+    double gasFor100km;
+    cin >> gasFor100km;
+    int totalLength = length * 2;
+    double totalTime = static_cast<double>(totalLength) / avrageSpeed;
+    int roundedTime = static_cast<int>(ceil(totalTime));
+    int time = roundedTime + timeOnMoon;
+    int gas = (gasFor100km * totalLength) / 100;
+    cout << time << endl;
+    cout << gas << endl;
+}
