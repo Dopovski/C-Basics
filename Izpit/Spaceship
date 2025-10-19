@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    double width, length, height, tall;
+    cin >> width >> length >> height >> tall;
+
+    double volume = width * length * height;
+    double volumeRoom = (tall + 0.40) * 2 * 2;
+    double space = volume / volumeRoom;
+
+    int roundedSpace = static_cast<int>(floor(space));
+
+    if (roundedSpace >= 3 && roundedSpace <= 10) {
+        cout << "The spacecraft holds " << roundedSpace << " astronauts.";
+    }
+    else if (roundedSpace < 3) {
+        cout << "The spacecraft is too small.";
+    }
+    else if (roundedSpace > 10) {
+        cout << "The spacecraft is too big.";
+    }
+}
