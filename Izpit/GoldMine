@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int locations;
+    cin >> locations;
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+
+    for (int i = 1; i <= locations; i++) {
+        double expectedGold;
+        cin >> expectedGold;
+
+        int days;
+        cin >> days;
+
+        double totalGold = 0;
+        for (int d = 1; d <= days; d++) {
+            double yield;
+            cin >> yield;
+            totalGold += yield;
+        }
+
+        double average = totalGold / days;
+
+        if (average >= expectedGold) {
+            cout << "Good job! Average gold per day: " << average << "." << endl;
+        } else {
+            cout << "You need " << expectedGold - average << " gold." << endl;
+        }
+    }
+
+    return 0;
+}
