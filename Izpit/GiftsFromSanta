@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N, M, S;
+    cin >> N >> M >> S;
+    
+    int address = M;
+    bool first = true;
+
+    while (address >= N) {
+        if (address % 2 == 0 && address % 3 == 0) {
+            if (address == S) {
+                break;
+            }
+            
+            if (!first) {
+                cout << " ";
+            }
+            cout << address;
+            first = false;
+        }
+        
+        address--;
+    }
+    
+    cout << endl;
+    return 0;
+}
