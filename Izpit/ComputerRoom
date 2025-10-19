@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string month;
+    cin >> month;
+
+    int hours, people;
+    cin >> hours >> people;
+
+    string timeOfDay;
+    cin >> timeOfDay;
+
+    double pricePerPerson = 0.0;
+    
+    if ((month == "march" || month == "april" || month == "may") && timeOfDay == "day") {
+        pricePerPerson = 10.50;
+    } 
+    else if ((month == "march" || month == "april" || month == "may") && timeOfDay == "night") {
+        pricePerPerson = 8.40;
+    } 
+    else if ((month == "june" || month == "july" || month == "august") && timeOfDay == "day") {
+        pricePerPerson = 12.60;
+    } 
+    else if ((month == "june" || month == "july" || month == "august") && timeOfDay == "night") {
+        pricePerPerson = 10.20;
+    }
+    
+    if (people >= 4) {
+        pricePerPerson *= 0.90;
+    }
+    
+    if (hours >= 5) {
+        pricePerPerson *= 0.50;
+    }
+
+    double totalCost = pricePerPerson * people * hours;
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+
+    cout << "Price per person for one hour: " << pricePerPerson << endl;
+    cout << "Total cost of the visit: " << totalCost << endl;
+
+    return 0;
+}
