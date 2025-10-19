@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int food; 
+    cin >> food;
+
+    int boughtFood = food * 1000;
+    int totalEatedFood = 0;
+
+    string input;
+    while (true) {
+        cin >> input;
+
+        if (input == "Adopted") {
+            break;
+        }
+
+        int eatedFood = stoi(input);
+        totalEatedFood += eatedFood;
+    }
+
+    int leftovers = boughtFood - totalEatedFood;
+
+    if (leftovers >= 0) {
+        cout << "Food is enough! Leftovers: " << leftovers << " grams." << endl;
+    } else {
+        cout << "Food is not enough. You need " << -leftovers << " grams more." << endl;
+    }
+
+    return 0;
+}
