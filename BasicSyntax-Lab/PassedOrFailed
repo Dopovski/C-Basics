@@ -1,0 +1,15 @@
+#include <iostream>
+#include<iomanip>
+
+using namespace std;
+
+int main() {
+    double grade;
+    cin >> grade;
+    if (grade >= 3) {
+        cout << "Passed!";
+    }
+    else {
+        cout << "Failed!";
+    }
+}
