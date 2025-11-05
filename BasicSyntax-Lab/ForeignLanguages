@@ -1,0 +1,22 @@
+#include <iostream>
+#include<iomanip>
+
+using namespace std;
+
+int main() {
+    string country;
+    cin >> country;
+
+    string language;
+
+   if (country == "USA" || country == "England") {
+        language = "English";
+    }
+    else if (country == "Spain" || country == "Argentina" || country == "Mexico") {
+        language = "Spanish";
+    }
+    else {
+        language = "unknown";
+    }
+    cout << language;
+}
