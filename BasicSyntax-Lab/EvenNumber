@@ -1,0 +1,20 @@
+#include <iostream>
+#include<iomanip>
+
+using namespace std;
+
+int main() {
+    do {
+        int n;
+        cin >> n;
+        if (n % 2 != 0) {
+            cout << "Please write an even number." << endl;
+        }
+        else {
+            n = (n < 0 ? n * -1 : n);
+            cout << "The number is: " << n << endl;
+            break;
+        }
+    }
+    while (true);
+}
