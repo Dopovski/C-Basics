@@ -1,0 +1,20 @@
+#include <iostream>
+#include<iomanip>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int num = 1;
+    int sum = 0;
+
+    while ( n != 0) {
+        cout << num << endl;
+        sum += num;
+        num += 2;
+        n--;
+    }
+
+    cout << "Sum: " << sum;
+}
