@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int calculateArea(int a, int b) {
+    return a * b;
+}
+
+int main() {
+    int a, b;
+    cin >> a >> b;
+
+    cout << calculateArea(a, b) << endl;
+    return 0;
+}
