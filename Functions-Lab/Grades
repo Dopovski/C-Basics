@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+string printGrade(float grade) {
+    if (grade >= 5.50) {
+        return  "Excellent";
+    }
+    if (grade >= 4.50) {
+        return  "Very good";
+    }
+    if (grade >= 3.50) {
+       return "Good";
+    }
+    if (grade >= 3.00) {
+        return "Poor";
+    }
+    return "Fail";
+}
+
+int main() {
+    float grade;
+    cin >> grade;
+
+    cout << printGrade(grade) << endl;
+    return 0;
+}
