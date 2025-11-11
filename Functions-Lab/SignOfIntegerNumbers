@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+void printSign(int n);
+int main()
+{
+   int n;
+   cin >> n;
+
+   printSign(n);
+}
+
+void printSign(int n) {
+   cout << "The number " << n << " is " << flush;
+
+   if (n == 0) {
+      cout << "zero";
+   }
+   else if (n < 0) {
+      cout << "negative";
+   }
+   else {
+      cout << "positive";
+   }
+   cout << "." << endl;
+}
