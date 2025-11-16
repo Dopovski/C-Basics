@@ -1,0 +1,25 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+double getPrice(string product) {
+    if (product == "coffee") return 1.50;
+    else if (product == "water") return 1.00;
+    else if (product == "coke") return 1.40;
+    else return 2.00;
+}
+
+double orderPrice(string product, int quantity) {
+    double price = getPrice(product);
+    return price * quantity;
+}
+
+int main() {
+    string product;
+    cin >> product;
+    int quantity;
+    cin >> quantity;
+
+    cout << fixed << setprecision(2) << orderPrice(product, quantity) << endl;
+}
