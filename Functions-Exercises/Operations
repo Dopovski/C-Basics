@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int add(int x, int y) { return x + y; }
+
+int subtract(int x, int y) { return x - y; }
+int multiply(int x, int y) { return x * y; }
+int divide(int x, int y) { return x / y; }
+
+int main() {
+    int n1, n2;
+    cin >> n1 >> n2;
+
+    char operation;
+    cin >> operation;
+
+    switch (operation) {
+        case '+': cout << add(n1, n2); break;
+        case '-': cout << subtract(n1, n2); break;
+        case '/': cout << divide(n1, n2); break;
+        case '*': cout << multiply(n1, n2); break;
+    }
+}
