@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int extractNum(int &n) {
+   int result = n % 10;
+    n = n / 10;
+    return result;
+}
+
+int multiply(int n) {
+    int sumOdd = 0;
+    int sumEven = 0;
+
+    while (n != 0) {
+        int digit = extractNum(n);
+        if (digit % 2 != 0) {
+            sumOdd += digit;
+        } else {
+            sumEven += digit;
+        }
+    }
+    cout << sumEven * sumOdd << endl;
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    multiply(n);
+    return 0;
+}
