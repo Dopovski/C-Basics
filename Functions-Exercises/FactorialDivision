@@ -1,0 +1,22 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+long factoriel(int n) {
+    long result = 1;
+    for (int cur= 2 ; cur <= n ; cur++) {
+        result *= cur;
+    }
+    return ( result);
+}
+
+int main() {
+    int n1, n2;
+    cin >> n1 >> n2;
+
+    long n1f = factoriel(n1);
+    long n2f = factoriel(n2);
+
+    cout << fixed << setprecision(2) << (double)(n1f) / n2f << endl;
+}
