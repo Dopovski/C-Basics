@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void readCordinates(double &x, double &y) {
+    cin >> x >> y;
+}
+
+double distanceToCenter(double x, double y) {
+    double distance;
+    distance = sqrt(x * x + y * y);
+
+    return distance;
+}
+void printCordinates(double x, double y) {
+    cout << "(" << x << ", " << y << ")" << endl;
+}
+
+int main() {
+    double x1, y1, x2, y2;
+    readCordinates(x1, y1);
+    readCordinates(x2, y2);
+
+    double xDistance = distanceToCenter(x1, y1);
+    double yDistance = distanceToCenter(x2, y2);
+
+    if (xDistance <= yDistance) {
+        printCordinates (x1, y1);
+    }
+    else {
+        printCordinates (x2, y2);
+    }
+    cout << endl;
+}
