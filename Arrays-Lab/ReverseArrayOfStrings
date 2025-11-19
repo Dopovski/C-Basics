@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+void ReverseArrayOfStrings(string words[], int arraySize) {
+    int mid = arraySize / 2;
+
+    for (int i = 0; i < mid; i++) {
+        int other = (arraySize - 1) - i;
+
+        string temp = words[other];
+        words[other] = words[i];
+        words[i] = temp;
+    }
+}
+
+void printArray(string words[], int arraySize) {
+    for (int i = 0; i < arraySize; i++) {
+        cout << words[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    const int MAX_NUMBERS_SIZE = 99;
+
+    string words[MAX_NUMBERS_SIZE];
+
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cin >> words[i];
+    }
+
+    ReverseArrayOfStrings(words, n);
+    printArray(words, n);
+
+    return 0;
+}
