@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+const int MAX_NUMBERS_SIZE = 99;
+
+int main() {
+
+    int numbers[MAX_NUMBERS_SIZE];
+
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cin >> numbers[i];
+    }
+
+    long sum = 0;
+    long sumOdds = 0;
+
+    for (int i = 0; i < n; i++) { 
+        if (numbers[i] % 2 == 0) {
+            sum += numbers[i];
+        }
+        else {
+            sumOdds += numbers[i];
+        }
+    }
+
+    cout << sum - sumOdds << endl;
+}
