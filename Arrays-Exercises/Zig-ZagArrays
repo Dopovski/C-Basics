@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+const int MAX_SIZE_ARRAY = 99;
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int array1[MAX_SIZE_ARRAY], array2[MAX_SIZE_ARRAY];
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        int i1, i2;
+        cin >> i1 >> i2;
+
+        if (i % 2 == 0) {
+            array1[i] = i1;
+            array2[i] = i2;
+        }
+        else {
+            array2[i] = i1;
+            array1[i] = i2;
+        }
+    }
+    printArray(array1, n);
+    printArray(array2, n);
+
+    return 0;
+}
