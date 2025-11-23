@@ -1,0 +1,36 @@
+#include <iostream>
+#include <array>
+using namespace std;
+
+const int MAX_SIZE_ARRAY = 100;
+
+void readArray(array<int, MAX_SIZE_ARRAY> &arr, int size) {
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    array<int, MAX_SIZE_ARRAY> arr;
+    readArray(arr, n);
+
+    int avrg = 0;
+    
+    for (int i = 0; i < n; i++) {
+        avrg += arr[i];
+    }
+    
+    avrg /= n;
+    
+    for (int i = 0; i < n; i++) {
+        if (arr[i] >= avrg) {
+            cout << arr[i] << " ";
+        }
+    }
+
+    cout << endl;
+    return 0;
+}
