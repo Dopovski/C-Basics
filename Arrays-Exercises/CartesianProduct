@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+const int MAX_SIZE_ARRAY = 100;
+
+void readArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+}
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    int numbers[MAX_SIZE_ARRAY];
+    readArray(numbers, n);
+
+    int certain[MAX_SIZE_ARRAY * MAX_SIZE_ARRAY];
+    int index = 0;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            certain[index] = numbers[i] * numbers[j];
+            index++;
+        }
+    }
+
+    printArray(certain, n * n);
+
+    return 0;
+}
