@@ -1,0 +1,30 @@
+#include <iostream>
+#include <sstream>
+#include <cctype>
+
+using namespace std;
+
+int main(void) {
+    string buffer;
+    getline(cin, buffer);
+
+    ostringstream num;
+    ostringstream letters;
+    ostringstream other;
+
+    for (int i = 0; i < buffer.length(); i++) {
+    char c = buffer[i];
+        if (isdigit(c)) {
+            num << c;
+        }
+        else if (isalpha(c)) {
+            letters << c;
+        }
+        else {
+            other << c;
+        }
+    }
+    cout << num.str() << endl;
+    cout << letters.str() << endl;
+    cout << other.str() << endl;
+}
