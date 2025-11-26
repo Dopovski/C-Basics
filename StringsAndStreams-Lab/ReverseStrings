@@ -1,0 +1,23 @@
+#include <iostream>
+#include <ranges>
+#include <sstream>
+
+using namespace std;
+
+string reverseString(string word) {
+    ostringstream ostr;
+    for (int i = word.size() - 1; i >= 0; i--) {
+        ostr << word[i];
+    }
+    return ostr.str();
+}
+
+int main(void) {
+    string word;
+    getline(cin, word);
+
+    while (word != "end") {
+        cout << word << " = " << reverseString(word) << endl;
+        getline(cin, word);
+    }
+}
