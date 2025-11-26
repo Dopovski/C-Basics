@@ -1,0 +1,20 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+int main(void) {
+    string pattern, buffer;
+
+    getline (cin,  pattern);
+    getline (cin,  buffer);
+
+    int index = buffer.find(pattern, 0);
+
+    while (index != string::npos) {
+        buffer.erase(index, pattern.size());
+        index = buffer.find(pattern);
+    }
+
+    cout << buffer << endl;
+}
