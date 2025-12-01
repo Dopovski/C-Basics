@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string replaceAll(string line, const string & findStr, const string & replaceStr) {
+    size_t pos = line.find(findStr);
+    while (pos != string::npos) {
+        line.replace(pos, findStr.length(), replaceStr);
+        pos = line.find(findStr, pos + replaceStr.length());
+    }
+    return line;
+}
+
+int main() {
+    string line, findStr, replaceStr;
+    getline(cin, line);
+    getline(cin, findStr);
+    getline(cin, replaceStr);
+
+    string result = replaceAll(line, findStr, replaceStr);
+    cout << result << endl;
+}
