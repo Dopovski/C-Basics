@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+bool isValid(const string & line) {
+    int brackets = 0;
+
+    for (char c : line) {
+        if (c == '(') {
+            brackets++;
+        }
+        else if (c == ')') {
+            brackets--;
+            if (brackets < 0) return false;
+        }
+    }
+
+    return brackets == 0;
+}
+
+int main() {
+    string line;
+    getline(cin, line);
+
+    cout << (isValid(line) ? "correct" : "incorrect") << endl;
+}
