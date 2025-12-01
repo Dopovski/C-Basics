@@ -1,0 +1,44 @@
+#include <iostream>
+
+using namespace std;
+
+string getUsername(string & line) {
+    string result;
+
+    if (line.empty()) return "";
+
+    int divider = line.find(", ");
+    if (divider == string::npos) {
+        result = line;
+        line.clear();
+    } else {
+        result = line.substr(0, divider);
+        line.erase(0, divider + 2);
+    }
+
+    return result;
+}
+
+bool isValid(const string & username) {
+    if (username.length() < 3 || username.length() > 16) return false;
+
+    for (char c : username) {
+        if (!isalnum((unsigned char)c) && c != '_' && c != '-') {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    string line;
+    getline(cin, line);
+
+    string username = getUsername(line);
+    while (!username.empty()) {
+        if (isValid(username)) {
+            cout << username << endl;
+        }
+        username = getUsername(line);
+    }
+}
