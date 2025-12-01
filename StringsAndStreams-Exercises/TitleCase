@@ -1,0 +1,31 @@
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+string capitalize(const string & line) {
+    ostringstream oss;
+    bool bCapitalize = true;
+
+    for (char ch : line) {
+
+        if (isalpha((unsigned char)ch)) {
+            if (bCapitalize) {
+                ch = toupper((unsigned char)ch);
+            }
+            bCapitalize = false;
+        }
+        else {
+            bCapitalize = true;
+        }
+
+        oss << ch;
+    }
+
+    return oss.str();
+}
+
+int main() {
+    string line;
+    getline(cin, line);
+    cout << capitalize(line) << endl;
+}
