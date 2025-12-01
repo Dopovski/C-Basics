@@ -1,0 +1,31 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+string repeating(const string & line) {
+    ostringstream ostr;
+
+    if (line.empty()) return "";
+
+    char previous = line[0];
+    ostr << previous;
+
+    for (int i = 1; i < line.size(); i++) {
+        char current = line[i];
+        if (current != previous) {
+            ostr << current;
+            previous = current;
+        }
+    }
+
+    return ostr.str();
+}
+
+int main() {
+    string line;
+    getline(cin, line);
+
+    string result = repeating(line);
+    cout << result << endl;
+}
