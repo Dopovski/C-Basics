@@ -1,0 +1,30 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+int main() {
+    string line;
+    getline(cin, line);
+
+    istringstream istr(line);
+    ostringstream ostr;
+    long sum = 0; 
+    string token;
+    bool first = true;
+
+    while (istr >> token) {
+        istringstream numberConv(token);
+        int number;
+        if (numberConv >> number) {
+            sum += number;
+        } else {
+            if (!first) ostr << " ";
+            ostr << token;
+            first = false;
+        }
+    }
+
+    cout << sum << endl;
+    cout << ostr.str() << endl;
+}
