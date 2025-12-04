@@ -1,0 +1,49 @@
+#include <iostream>
+#include <list>
+#include <sstream>
+
+using namespace std;
+
+void readNumbers(list<int>& nums) {
+    string line;
+    getline(cin, line);
+
+    istringstream iss(line);
+    int num;
+    while (iss >> num) {
+        nums.push_back(num);
+    }
+}
+
+void removeNegatives(list<int>& nums) {
+    for (auto it = nums.begin(); it != nums.end(); ) {
+        if (*it < 0) {
+            it = nums.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}
+
+void reversePrint(const list<int>& nums) {
+    if (nums.empty()) {
+        cout << "empty" << endl;
+        return;
+    }
+    auto it = nums.end();
+    --it; 
+    while (true) {
+        cout << *it << " ";
+        if (it == nums.begin()) break;
+        --it;
+    }
+    cout << endl;
+}
+
+int main() {
+    list<int> nums;
+
+    readNumbers(nums);
+    removeNegatives(nums);
+    reversePrint(nums);
+}
