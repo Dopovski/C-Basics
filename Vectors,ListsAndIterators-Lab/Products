@@ -1,0 +1,27 @@
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    vector<string> product;
+
+    int num;
+    cin >> num;
+    cin.ignore();
+
+    product.reserve(num);
+
+    while (num--) {
+        string s;
+        getline(cin, s);
+        product.push_back(s);
+    }
+    sort(product.begin(), product.end());
+
+    for (int i = 0; i < product.size(); i++) {
+        cout << i + 1 << "." << product[i] << endl;
+    }
+}
