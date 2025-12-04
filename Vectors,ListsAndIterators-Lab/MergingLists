@@ -1,0 +1,48 @@
+#include <iostream>
+#include <list>
+#include <sstream>
+
+using namespace std;
+
+void readNumbers(list<int>& nums) {
+    string line;
+    getline(cin, line);
+
+    istringstream iss(line);
+    int num;
+    while (iss >> num) {
+        nums.push_back(num);
+    }
+}
+list <int> mergeNum (const list<int> & l1, const list<int> & l2) {
+    list<int>:: const_iterator it1 = l1.begin();
+    list<int>:: const_iterator it2 = l2.begin();
+    list<int> result;
+    while (it1 != l1.end() || it2 != l2.end()) {
+        if (it1 != l1.end()) {
+            result.push_back(*it1);
+            it1++;
+        }
+        if (it2 != l2.end()) {
+            result.push_back(*it2);
+            it2++;
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    list<int> l1, l2;
+
+    readNumbers(l1);
+    readNumbers(l2);
+
+    list<int> result = mergeNum(l1, l2);
+
+    for (int i : result) {
+        cout << i << " ";
+    }
+
+    cout << endl;
+}
