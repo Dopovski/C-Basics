@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+
+using namespace std;
+
+void readNumbers(vector<int>& nums) {
+    string line;
+    getline(cin, line);
+
+    istringstream iss(line);
+    int num;
+    while (iss >> num) {
+        nums.push_back(num);
+    }
+}
+
+
+int main(){
+ vector<int> nums;
+    readNumbers(nums);
+
+    string line;
+    getline(cin,line);
+
+    while (line != "end") {
+        string command;
+        int parametar;
+
+        istringstream iss(line);
+        iss >> command >> parametar;
+
+        if (command == "Add") {
+            nums.push_back(parametar);
+        }
+        else if (command == "Remove") {
+        vector<int>::iterator found = find(nums.begin(), nums.end(), parametar);
+            if (found != nums.end()) {
+                nums.erase(found);
+            }
+        }
+        else if (command == "RemoveAt") {
+            nums.erase(nums.begin() + parametar);
+        }
+        else if (command == "Insert") {
+            int i;
+            iss >> i;
+            nums.insert(nums.begin() + i, parametar);
+        }
+        getline(cin,line);
+    }
+    for (int y : nums) {
+        cout << y << " ";
+    }
+}
