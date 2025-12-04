@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+void readNumbers(vector<int>& nums) {
+    string line;
+    getline(cin, line);
+
+    istringstream iss(line);
+    int num;
+    while (iss >> num) {
+        nums.push_back(num);
+    }
+}
+
+int main() {
+    vector<int> nums;
+    readNumbers(nums);
+
+    int from = 0;
+    int to = nums.size() - 1;
+
+    vector<int> result;
+
+    while (from <= to) {
+        int calc = (from != to) ? nums[from] + nums[to]
+                                : nums[from];
+        result.push_back(calc);
+        from++;
+        to--;
+    }
+
+    for (int x : result)
+        cout << x << " ";
+    cout << endl;
+}
