@@ -1,0 +1,55 @@
+#include <iostream>
+#include <list>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
+void readTrain(list<int> &train) {
+    string line;
+    if (!std::getline(cin, line)) return;
+    istringstream iss(line);
+    int x;
+    while (iss >> x) {
+        train.push_front(x);
+    }
+}
+
+void takeFront(list<int> &src, list<int> &merged, string &pattern, char who) {
+    int val = src.front();
+    src.pop_front();
+    merged.push_front(val);
+    pattern.push_back(who);
+}
+
+int main() {
+    list<int> A, B;
+    readTrain(A);
+    readTrain(B);
+
+    string pattern;
+    list<int> merged;
+
+    while (!A.empty() || !B.empty()) {
+        if (A.empty()) {
+            takeFront(B, merged, pattern, 'B');
+        } else if (B.empty()) {
+            takeFront(A, merged, pattern, 'A');
+        } else {
+            if (A.front() < B.front()) takeFront(A, merged, pattern, 'A');
+            else takeFront(B, merged, pattern, 'B');
+        }
+    }
+
+    cout << pattern << endl;
+
+    bool first = true;
+    for (int v : merged) {
+        if (!first) cout << ' ';
+        cout << v;
+        first = false;
+    }
+    cout << '\n';
+
+    return 0;
+}
