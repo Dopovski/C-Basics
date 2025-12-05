@@ -1,0 +1,54 @@
+#include <iostream>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+int level(char c) {
+    switch(c) {
+        case '(': return 1;
+        case ')': return 1;
+        case '[': return 2;
+        case ']': return 2;
+        case '{': return 3;
+        case '}': return 3;
+    }
+    return -1;
+}
+
+bool isOpening(char c) {
+    return c == '(' || c == '[' || c == '{';
+}
+
+bool matches(char open, char close) {
+    return (open == '(' && close == ')') ||
+           (open == '[' && close == ']') ||
+           (open == '{' && close == '}');
+}
+
+int main() {
+    string s;
+    getline(cin, s);
+
+    stack<char> st;
+
+    for (char c : s) {
+        if (isOpening(c)) {
+            if (!st.empty() && level(c) > level(st.top())) {
+                cout << "invalid";
+                return 0;
+            }
+            st.push(c);
+        }
+        else {
+            if (st.empty() || !matches(st.top(), c)) {
+                cout << "invalid";
+                return 0;
+            }
+            st.pop();
+        }
+    }
+
+    cout << (st.empty() ? "valid" : "invalid");
+    return 0;
+}
