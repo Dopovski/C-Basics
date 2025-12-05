@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int N;
+    cin >> N;
+
+    vector<long long> checkup(N);
+    vector<long long> installation(N);
+
+    for (int i = 0; i < N; i++)
+        cin >> checkup[i];
+
+    for (int i = 0; i < N; i++)
+        cin >> installation[i];
+
+    for (int i = 0; i < N; i++) {
+        long long start = installation[i];
+        long long now = checkup[i];
+        long long loss = start - now;
+        long long remaining = now;
+
+        long long extra_years = remaining / loss;
+
+        long long lifetime = 1 + extra_years;
+
+        cout << lifetime;
+        if (i + 1 < N) cout << " ";
+    }
+
+    return 0;
+}
