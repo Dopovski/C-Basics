@@ -1,0 +1,74 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+using namespace std;
+
+int insertNumber(vector<int>& sequence, int number) {
+    sequence.push_back(number);
+}
+
+int sumLastTwo(vector<int>& sequence) {
+    int a = sequence.back();
+    sequence.pop_back();
+    int b = sequence.back();
+    sequence.pop_back();
+    sequence.push_back(a + b);
+}
+
+int subtractLastTwo(vector<int>& sequence) {
+    int a = sequence.back();
+    sequence.pop_back();
+    int b = sequence.back();
+    sequence.pop_back();
+    sequence.push_back(a - b);
+}
+
+int concatLastTwo(vector<int>& sequence) {
+    int a = sequence.back();
+    sequence.pop_back();
+    int b = sequence.back();
+    sequence.pop_back();
+    string concatStr = to_string(b) + to_string(a);
+    int concatInt;
+    stringstream ss(concatStr);
+    ss >> concatInt;
+    sequence.push_back(concatInt);
+}
+
+int discardLast(vector<int>& sequence) {
+    sequence.pop_back();
+}
+
+int main() {
+    vector<int> sequence;
+    string line;
+
+    while (getline(cin, line)) {
+        if (line == "end") {
+            break;
+        }
+
+        stringstream ss(line);
+        int number;
+        if (ss >> number) {
+            insertNumber(sequence, number);
+        } else {
+            if (line == "sum") {
+                sumLastTwo(sequence);
+            } else if (line == "subtract") {
+                subtractLastTwo(sequence);
+            } else if (line == "concat") {
+                concatLastTwo(sequence);
+            } else if (line == "discard") {
+                discardLast(sequence);
+            }
+        }
+    }
+
+    for (int num : sequence) {
+        cout << num << endl;
+    }
+
+    return 0;
+}
