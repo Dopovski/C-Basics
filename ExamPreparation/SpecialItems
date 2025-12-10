@@ -1,0 +1,65 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+bool isVowel(char c) {
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+
+string removeExtraSpaces(const string& input) {
+    string result;
+    bool lastWasSpace = false;
+
+    for (char c : input) {
+        if (c == ' ') {
+            if (!lastWasSpace) {
+                result.push_back(' ');
+            }
+            lastWasSpace = true;
+        } else {
+            result.push_back(c);
+            lastWasSpace = false;
+        }
+    }
+    return result;
+}
+
+string removeExtraNonVowels(const string& input) {
+    if (input.empty()) return input;
+
+    string result;
+    char last = '\0';
+    bool first = true;
+
+    for (char c : input) {
+        if (first) {
+            result.push_back(c);
+            last = c;
+            first = false;
+        } else {
+            bool isDuplicateNonVowel = (c == last && !isVowel(c));
+
+            if (!isDuplicateNonVowel) {
+                result.push_back(c);
+                last = c;
+            }
+        }
+    }
+    return result;
+}
+
+string removeDuplicates(const string& line) {
+    string collapsed = removeExtraSpaces(line);
+    string finalString = removeExtraNonVowels(collapsed);
+    return finalString;
+}
+
+int main() {
+    string line;
+    getline(cin, line);
+
+
+    string rightOutput = removeDuplicates(line);
+    cout << rightOutput;
+}
