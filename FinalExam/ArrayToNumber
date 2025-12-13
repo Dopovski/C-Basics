@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+vector<int> readN(int count) {
+    vector<int> n;
+    string line;
+
+    getline(cin, line);
+    stringstream ss(line);
+    int number;
+
+    while (ss >> number && n.size() < count) {
+        n.push_back(number);
+    }
+
+    return n;
+}
+
+int condense(vector<int> n) {
+    while (n.size() > 1) {
+        vector<int> condensed(n.size() - 1);
+        for (size_t i = 0; i < condensed.size(); i++) {
+            condensed[i] = n[i] + n[i + 1];
+        }
+        n = condensed;
+    }
+
+    return n.empty() ? 0 : n[0];
+}
+
+int main() {
+    int arraySize;
+    cin >> arraySize;
+    cin.ignore();
+
+    vector<int> numbers = readN(arraySize);
+
+    int result = condense(numbers);
+
+    cout << result << endl;
+
+    return 0;
+}
