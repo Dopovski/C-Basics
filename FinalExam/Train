@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+void printTrain(const vector<string>& train) {
+    cout << "|";
+    for (const auto& wagon : train) {
+        cout << wagon << "|";
+    }
+    cout << "\n";
+}
+
+void moveWagon(vector<string>& train, int oldI, int newI) {
+    int n = static_cast<int>(train.size());
+    if (oldI < 0 || oldI >= n || newI < 0 || newI >= n) return;
+    if (oldI == newI) return;
+
+    string wagon = train[oldI];
+    train.erase(train.begin() + oldI);
+    train.insert(train.begin() + newI, wagon);
+}
+
+void leaveWagon(vector<string>& train, int idx) {
+    if (idx >= 0 && idx < static_cast<int>(train.size())) {
+        train.erase(train.begin() + idx);
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    vector<string> train;
+    string line;
+
+    while (getline(cin, line)) {
+        if (line == "end") break;
+        if (line == "empty") train.push_back(" ");
+        else train.push_back(line);
+    }
+
+    while (getline(cin, line)) {
+        if (line.empty()) continue;
+        stringstream ss(line);
+        string cmd;
+        ss >> cmd;
+
+        if (cmd == "P") {
+            printTrain(train);
+        } else if (cmd == "M") {
+            int oldPos, newPos;
+            if (!(ss >> oldPos >> newPos)) continue;
+            moveWagon(train, oldPos - 1, newPos - 1);
+            printTrain(train);
+        } else if (cmd == "L") {
+            int pos;
+            if (!(ss >> pos)) continue;
+            leaveWagon(train, pos - 1);
+            printTrain(train);
+        } else if (cmd == "E") {
+            break;
+        }
+    }
+
+    return 0;
+}
