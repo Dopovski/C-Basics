@@ -1,0 +1,36 @@
+#include <iostream>
+#include <sstream>
+#include <queue>
+#include <string>
+
+using namespace std;
+
+int main() {
+    queue<string> kids;
+    string input;
+    getline(cin, input);
+
+    stringstream ss(input);
+    string name;
+
+    while (ss >> name) {
+        kids.push(name);
+    }
+
+    int n;
+    cin >> n;
+
+    while (kids.size() > 1) {
+        for (int i = 1; i < n; i++) {
+            kids.push(kids.front());
+            kids.pop();
+        }
+
+        cout << "Removed " << kids.front() << endl;
+        kids.pop();
+    }
+
+    cout << "Last is " << kids.front() << endl;
+
+    return 0;
+}
