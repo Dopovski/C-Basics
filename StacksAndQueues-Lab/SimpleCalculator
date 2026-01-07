@@ -1,0 +1,53 @@
+#include <iostream>
+#include <sstream>
+#include <stack>
+
+using namespace std;
+
+int main() {
+    stack<int> operands;
+    stack<char> operators;
+
+    string input;
+    getline(cin, input);
+    istringstream iss(input);
+
+    int number;
+    char op;
+
+    iss >> number;
+    operands.push(number);
+
+    while (iss >> op >> number) {
+        operators.push(op);
+        operands.push(number);
+    }
+    
+    stack<int> nums;
+    stack<char> ops;
+
+    while (!operands.empty()) {
+        nums.push(operands.top());
+        operands.pop();
+    }
+
+    while (!operators.empty()) {
+        ops.push(operators.top());
+        operators.pop();
+    }
+
+    int result = nums.top();
+    nums.pop();
+
+    while (!ops.empty()) {
+        char operation = ops.top(); ops.pop();
+        int value = nums.top(); nums.pop();
+
+        if (operation == '+')
+            result += value;
+        else if (operation == '-')
+            result -= value;
+    }
+
+    cout << result << endl;
+}
