@@ -1,0 +1,35 @@
+#include <iostream>
+#include <sstream>
+#include <queue>
+
+using namespace std;
+
+int main() {
+    queue<int> q;
+    string input;
+    getline(cin, input);
+
+    stringstream ss(input);
+    int number;
+
+    while (ss >> number) {
+        q.push(number);
+    }
+
+    bool first = true;
+
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
+
+        if (current % 2 == 0) {
+            if (!first) {
+                cout << ", ";
+            }
+            cout << current;
+            first = false;
+        }
+    }
+
+    return 0;
+}
