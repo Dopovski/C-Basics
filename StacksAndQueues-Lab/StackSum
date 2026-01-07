@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <stack>
+
+using namespace std;
+
+void executeAdd(stack<int>& num, int arg1, int arg2) {
+    num.push(arg1);
+    num.push(arg2);
+}
+
+void executeRemove(stack<int>& num, int count) {
+    if (num.size() < count) {
+        return;
+    }
+    while (count--) {
+        num.pop();
+    }
+}
+
+int main() {
+    stack<int> num;
+    string buffer;
+    
+    getline(cin, buffer);
+    istringstream numbersStream(buffer);
+
+    int number;
+    while (numbersStream >> number) {
+        num.push(number);
+    }
+    
+    while (true) {
+        getline(cin, buffer);
+        if (buffer == "end") {
+            break;
+        }
+
+        istringstream commandStream(buffer);
+        string command;
+        commandStream >> command;
+
+        if (command == "add") {
+            int x, y;
+            commandStream >> x >> y;
+            executeAdd(num, x, y);
+        }
+        else if (command == "remove") {
+            int count;
+            commandStream >> count;
+            executeRemove(num, count);
+        }
+    }
+
+    int sum = 0;
+    while (!num.empty()) {
+        sum += num.top();
+        num.pop();
+    }
+
+    cout << sum << endl;
+    return 0;
+}
