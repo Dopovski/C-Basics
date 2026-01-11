@@ -1,0 +1,40 @@
+#include <iostream>
+#include <stack>
+#include <sstream>
+
+using namespace std;
+
+int main() {
+    stack<int> clothes;
+    string line;
+    getline(cin, line);
+
+    stringstream ss(line);
+    int x;
+
+    while (ss >> x)
+        clothes.push(x);
+
+    int capacity;
+    cin >> capacity;
+
+    int racks = 0;
+    int currentSum = 0;
+
+    while (!clothes.empty()) {
+        if (currentSum + clothes.top() <= capacity) {
+            currentSum += clothes.top();
+            clothes.pop();
+        } else {
+            racks++;
+            currentSum = 0;
+        }
+    }
+
+    if (currentSum > 0)
+        racks++;
+
+    cout << racks << endl;
+
+    return 0;
+}
