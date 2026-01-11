@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+
+using namespace std;
+
+vector<int> readPetrol(int N) {
+    vector<int> petrol(N);
+    for (int i = 0; i < N; i++)
+        cin >> petrol[i];
+    return petrol;
+}
+
+vector<int> readDistance(int N) {
+    vector<int> distance(N);
+    for (int i = 0; i < N; i++)
+        cin >> distance[i];
+    return distance;
+}
+
+bool canCompleteFromIndex(const vector<int>& petrol, const vector<int>& distance, int startIndex) {
+    int N = petrol.size();
+    int fuel = 0;
+    for (int i = 0; i < N; i++) {
+        int idx = (startIndex + i) % N;
+        fuel += petrol[idx] - distance[idx];
+        if (fuel < 0)
+            return false;
+    }
+    return true;
+}
+
+int findStartingPump(const vector<int>& petrol, const vector<int>& distance) {
+    int N = petrol.size();
+    queue<int> candidates;
+    for (int i = 0; i < N; i++)
+        candidates.push(i);
+
+    while (!candidates.empty()) {
+        int start = candidates.front();
+        candidates.pop();
+        if (canCompleteFromIndex(petrol, distance, start))
+            return start;
+    }
+    return -1;
+}
+
+int main() {
+    int N;
+    cin >> N;
+
+    vector<int> petrol(N);
+    vector<int> distance(N);
+
+    for (int i = 0; i < N; i++)
+        cin >> petrol[i] >> distance[i];
+
+    int startIndex = findStartingPump(petrol, distance);
+    cout << startIndex << endl;
+
+    return 0;
+}
