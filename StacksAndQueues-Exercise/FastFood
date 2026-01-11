@@ -1,0 +1,51 @@
+#include <iostream>
+#include <queue>
+#include <sstream>
+
+using namespace std;
+
+int main() {
+    int food;
+    cin >> food;
+    cin.ignore();
+
+    queue<int> orders;
+    string line;
+    getline(cin, line);
+
+    stringstream ss(line);
+    int x;
+    int maxOrder = 0;
+
+    while (ss >> x) {
+        orders.push(x);
+        if (x > maxOrder)
+            maxOrder = x;
+    }
+
+    cout << maxOrder << endl;
+
+    while (!orders.empty()) {
+        if (food >= orders.front()) {
+            food -= orders.front();
+            orders.pop();
+        } else {
+            break;
+        }
+    }
+
+    if (orders.empty()) {
+        cout << "Orders complete" << endl;
+    } else {
+        cout << "Orders left: ";
+        while (!orders.empty()) {
+            cout << orders.front();
+            orders.pop();
+            if (!orders.empty())
+                cout << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
