@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+
+using namespace std;
+
+bool isMatching(char open, char close) {
+    return (open == '(' && close == ')') ||
+           (open == '{' && close == '}') ||
+           (open == '[' && close == ']');
+}
+
+bool isBalanced(const string& sequence) {
+    stack<char> s;
+    for (char ch : sequence) {
+        if (ch == '(' || ch == '{' || ch == '[')
+            s.push(ch);
+        else {
+            if (s.empty() || !isMatching(s.top(), ch))
+                return false;
+            s.pop();
+        }
+    }
+    return s.empty();
+}
+
+int main() {
+    string sequence;
+    cin >> sequence;
+
+    if (isBalanced(sequence))
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
+
+    return 0;
+}
