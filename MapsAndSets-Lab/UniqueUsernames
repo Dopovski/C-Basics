@@ -1,0 +1,33 @@
+#include <iostream>
+#include <set>
+#include <string>
+
+using namespace std;
+
+using UsernameSet = set<string>;
+
+void printUniqueUsernames(int count) {
+    UsernameSet usernames;
+    string name;
+
+    for (int i = 0; i < count; ++i) {
+        cin >> name;
+        usernames.insert(name);
+    }
+
+    for (const string& user : usernames) {
+        cout << user << endl;
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    if (cin >> n) {
+        printUniqueUsernames(n);
+    }
+
+    return 0;
+}
