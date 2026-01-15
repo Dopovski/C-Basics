@@ -1,0 +1,41 @@
+#include <iostream>
+#include <set>
+#include <sstream>
+
+using namespace std;
+
+int main() {
+    set<string> parkingLot;
+    string input;
+
+    while (getline(cin, input) && input != "END") {
+        size_t commaPos = input.find(',');
+
+        if (commaPos != string::npos) {
+            string direction = input.substr(0, commaPos);
+            string carNumber = input.substr(commaPos + 2);
+
+            if (direction == "IN") {
+                parkingLot.insert(carNumber);
+            } else if (direction == "OUT") {
+                parkingLot.erase(carNumber);
+            }
+        }
+    }
+
+    if (parkingLot.empty()) {
+        cout << "Parking Lot is Empty" << endl;
+    } else {
+        bool first = true;
+        for (const string& car : parkingLot) {
+            if (!first) {
+                cout << " ";
+            }
+            cout << car << endl;
+            first = false;
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
