@@ -1,0 +1,38 @@
+#include <iostream>
+#include <map>
+#include <vector>
+#include <cstdio>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    map<string, vector<double> > students;
+    string name;
+    double grade;
+
+    for (int i = 0; i < n; i++) {
+        cin >> name >> grade;
+        students[name].push_back(grade);
+    }
+
+    map<string, vector<double> >::iterator it;
+
+    for (it = students.begin(); it != students.end(); it++) {
+        double sum = 0;
+
+        cout << it->first << " -> ";
+
+        vector<double>::iterator gIt;
+        for (gIt = it->second.begin(); gIt != it->second.end(); gIt++) {
+            printf("%.2f ", *gIt);
+            sum += *gIt;
+        }
+
+        printf("(avg: %.2f)\n", sum / it->second.size());
+    }
+
+    return 0;
+}
