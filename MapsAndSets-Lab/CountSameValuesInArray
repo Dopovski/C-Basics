@@ -1,0 +1,24 @@
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    unordered_map<double, int> counts;
+    vector<double> order;
+    double x;
+
+    while (cin >> x) {
+        if (counts.find(x) == counts.end()) {
+            order.push_back(x);
+        }
+        counts[x]++;
+    }
+
+    for (double value : order) {
+        cout << value << " - " << counts[value] << " times" << endl;
+    }
+
+    return 0;
+}
