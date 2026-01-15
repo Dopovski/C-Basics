@@ -1,0 +1,44 @@
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    map<string, map<string, vector<string> > > data;
+    string continent, country, city;
+
+    for (int i = 0; i < n; i++) {
+        cin >> continent >> country >> city;
+        data[continent][country].push_back(city);
+    }
+
+    map<string, map<string, vector<string> > >::iterator contIt;
+    for (contIt = data.begin(); contIt != data.end(); contIt++) {
+        cout << contIt->first << ":" << endl;
+
+        map<string, vector<string> >::iterator countryIt;
+        for (countryIt = contIt->second.begin();
+             countryIt != contIt->second.end();
+             countryIt++) {
+            
+            sort(countryIt->second.begin(), countryIt->second.end());
+
+            cout << countryIt->first << " -> ";
+
+            for (size_t i = 0; i < countryIt->second.size(); i++) {
+                cout << countryIt->second[i];
+                if (i + 1 < countryIt->second.size()) {
+                    cout << ", ";
+                }
+            }
+            cout << endl;
+             }
+    }
+
+    return 0;
+}
