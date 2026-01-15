@@ -1,0 +1,46 @@
+#include <iostream>
+#include <set>
+#include <vector>
+
+using namespace std;
+
+using NumberSet = set<int>;
+
+void solve() {
+    int n, m;
+    if (!(cin >> n >> m)) return;
+
+    NumberSet firstSet;
+    NumberSet intersection;
+
+    for (int i = 0; i < n; ++i) {
+        int num;
+        cin >> num;
+        firstSet.insert(num);
+    }
+
+    for (int i = 0; i < m; ++i) {
+        int num;
+        cin >> num;
+        if (firstSet.count(num)) {
+            intersection.insert(num);
+        }
+    }
+
+    bool first = true;
+    for (const int& val : intersection) {
+        if (!first) cout << " ";
+        cout << val;
+        first = false;
+    }
+    cout << endl;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    solve();
+
+    return 0;
+}
