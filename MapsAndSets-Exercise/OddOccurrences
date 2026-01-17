@@ -1,0 +1,42 @@
+#include <iostream>
+#include <sstream>
+#include <unordered_map>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    string line;
+    getline(cin, line);
+
+    stringstream ss(line);
+    string word;
+
+    unordered_map<string, int> count;
+    vector<string> order;
+
+    while (ss >> word) {
+        for (char &c : word) {
+            c = tolower(c);
+        }
+
+        if (count.find(word) == count.end()) {
+            count[word] = 1;
+            order.push_back(word);
+        } else {
+            count[word]++;
+        }
+    }
+    
+    bool first = true;
+    for (string w : order) {
+        if (count[w] % 2 != 0) {
+            if (!first) cout << ", ";
+            cout << w;
+            first = false;
+        }
+    }
+
+    cout << endl;
+    return 0;
+}
