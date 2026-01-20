@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> resources;
+    vector<string> order;
+
+    while (true) {
+        string resource;
+        getline(cin, resource);
+
+        if (resource == "stop") {
+            break;
+        }
+
+        string quantityLine;
+        getline(cin, quantityLine);
+        int quantity = stoi(quantityLine);
+        
+        if (resources.find(resource) == resources.end()) {
+            order.push_back(resource);
+            resources[resource] = quantity;
+        } else {
+            resources[resource] += quantity;
+        }
+    }
+    
+    for (const string& res : order) {
+        cout << res << " -> " << resources[res] << endl;
+    }
+
+    return 0;
+}
