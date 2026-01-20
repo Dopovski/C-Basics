@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    string line;
+    getline(cin, line); 
+
+    stringstream ss(line);
+    int num;
+    vector<int> squares;
+
+    while (ss >> num) {
+        if (num >= 0) {
+            int root = sqrt(num);
+            if (root * root == num) {
+                squares.push_back(num);
+            }
+        }
+    }
+    
+    sort(squares.begin(), squares.end(), greater<int>());
+    
+    for (size_t i = 0; i < squares.size(); i++) {
+        if (i > 0) cout << " ";
+        cout << squares[i];
+    }
+
+    cout << endl;
+    return 0;
+}
