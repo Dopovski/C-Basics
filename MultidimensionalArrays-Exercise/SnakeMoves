@@ -1,0 +1,44 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+using namespace std;
+
+const size_t range = 12;
+
+int main() {
+
+    char field[range][range+1] = {};
+    int n, m;
+    string snake;
+    cin >> n >> m >> snake;
+
+    int snakei = 0;
+
+    for (int i = 0; i < n; i++) {
+        int scol, ecol, icol;
+        if (i % 2) {
+            scol = m - 1;
+            ecol = 0;
+            icol = -1;
+        }
+        else {
+            scol = 0;
+            ecol = m - 1;
+            icol = 1;
+        }
+        for (int j = scol;; j += icol) {
+            field[i][j] = snake[snakei++];
+            if (snakei >= snake.size()) {
+                snakei = 0;
+            }
+            if (j == ecol) {
+                break;
+            }
+        }
+        field[i][m] = '\0';
+    }
+    for (int i = 0; i < n; i++) {
+        cout << field[i] << endl;
+    }
+}
