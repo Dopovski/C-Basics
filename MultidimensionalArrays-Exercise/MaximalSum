@@ -1,0 +1,54 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <climits>
+
+using namespace std;
+
+void readMatrix(istream &ins, vector<vector<int>>& mat) {
+    int rows, cols;
+    cin >> rows >> cols;
+
+    mat.resize(rows, vector<int>(cols, 0));
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            ins >> mat[i][j];
+        }
+    }
+}
+
+int sum(const vector<vector<int>>& mat, int row, int col) {
+    return mat[row][col] + mat[row][col+1] + mat[row][col+2] 
+         + mat[row+1][col] + mat[row+1][col+1] + mat[row+1][col+2]
+         + mat[row+2][col] + mat[row+2][col+1] + mat[row+2][col+2];
+}
+
+int main() {
+    vector<vector<int>> mat;
+    readMatrix(cin, mat);
+
+    int max = INT_MIN;
+    int maxRow = 0;
+    int maxCol = 0;
+
+    for (int i = 0; i < mat.size() - 2; i++) {
+        for (int j = 0; j < mat[i].size() - 2; j++) {
+            int sum3x3 = sum(mat, i, j);
+            if (sum3x3 > max) {
+                max = sum3x3;
+                maxRow = i;
+                maxCol = j;
+            }
+        }
+    }
+    
+    cout << "Sum = " << max << endl;
+
+    for (int i = maxRow; i < maxRow + 3; i++) {
+        for (int j = maxCol; j < maxCol + 3; j++) {
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
