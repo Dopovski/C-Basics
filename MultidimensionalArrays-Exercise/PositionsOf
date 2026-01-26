@@ -1,0 +1,41 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+using namespace std;
+
+void readMatrix(istream &ins, vector<vector<int>>& mat) {
+    int rows, cols;
+    cin >> rows >> cols;
+
+    mat.resize(rows, vector<int>(cols, 0));
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            ins >> mat[i][j];
+        }
+    }
+}
+
+int main() {
+    vector<vector<int>> mat;
+    readMatrix(cin, mat);
+
+    int search;
+    cin >> search;
+
+    bool found = false;
+
+    for (int i = 0; i < mat.size(); i++) {
+        for (int j = 0; j < mat[i].size(); j++) {
+            if (mat[i][j] == search) {
+                cout << i << " " << j << endl;
+                found = true;
+            }
+        }
+    }
+    
+    if (found == false) {
+        cout << "not found" << endl;
+    }
+}
