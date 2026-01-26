@@ -1,0 +1,47 @@
+#include <iostream>
+#include <sstream>
+#include <array>
+
+using namespace std;
+
+const int maxDemetion = 10;
+
+void readMatrix(istream &ins, array<array<int, maxDemetion>, maxDemetion> & mat, int & rows, int & cols) {
+    cin >> rows;
+    cin.ignore();
+
+    for (int i = 0; i < rows; i++) {
+        string line;
+        getline(cin, line);
+        istringstream iss(line);
+        cols = 0;
+        int buffer;
+        while (iss >> buffer) {
+            mat[i][cols++] = buffer;
+        }
+    }
+}
+bool compare(const array<array<int, maxDemetion>, maxDemetion> &mat1, int mat1rows, int mat1cols,
+    const array<array<int, maxDemetion>, maxDemetion> &mat2, int mat2rows, int mat2cols) {
+    if (mat1rows != mat2rows || mat1cols != mat2cols) {
+        return false;
+    }
+    for (int i = 0; i < mat1rows; i++) {
+        for (int j = 0; j < mat2cols; j++) {
+            if (mat1[i][j] != mat2[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+int main() {
+    array<array<int, maxDemetion>, maxDemetion> mat1, mat2;
+    int mat1rows, mat1cols, mat2rows, mat2cols;
+    readMatrix(cin, mat1, mat1rows, mat1cols);
+    readMatrix(cin, mat2, mat2rows, mat2cols);
+
+    bool equal = compare(mat1, mat1rows, mat1cols, mat2, mat2rows, mat2cols);
+    cout << (equal ? "equal " : "not equal ") << endl;
+}
