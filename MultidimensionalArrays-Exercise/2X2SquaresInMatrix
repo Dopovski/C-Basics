@@ -1,0 +1,39 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+
+using namespace std;
+
+void readMatrix(istream &ins, vector<vector<char> >& mat) {
+    int rows, cols;
+    cin >> rows >> cols;
+
+    mat.resize(rows, vector<char>(cols, 0));
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            ins >> mat[i][j];
+        }
+    }
+}
+
+bool has(const vector<vector<char> >& mat, int row, int col) {
+    return mat[row][col] == mat[row][col+1] && 
+           mat[row][col] == mat[row+1][col] && 
+           mat[row][col] == mat[row+1][col+1];
+}
+
+int main() {
+    vector<vector<char> > mat;
+    readMatrix(cin, mat);
+
+    int square = 0;
+    for (int i = 0; i < mat.size()-1; i++) {
+        for (int j = 0; j < mat[i].size()-1; j++) {
+            if (has(mat, i, j)) {
+                square++;
+            }
+        }
+    }
+    cout << square << endl;
+}
