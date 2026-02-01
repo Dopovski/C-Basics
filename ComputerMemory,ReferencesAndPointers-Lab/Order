@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+#include <map>
+
+using namespace std;
+
+int main() {
+    map<int, string> companies;
+
+    while (true) {
+        string name;
+        cin >> name;
+
+        if (name == "end") {
+            break;
+        }
+
+        int id;
+        cin >> id;
+        companies[id] = name;
+    }
+
+    for (auto it = companies.begin(); it != companies.end(); ++it) {
+        cout << it->second << " " << it->first << endl;
+    }
+
+    return 0;
+}
