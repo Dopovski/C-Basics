@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool tryParse(const string& s, int& value) {
+    value = 0;
+    if (s.empty()) return false;
+
+    for (char c : s) {
+        if (c < '0' || c > '9') {
+            return false;
+        }
+        value = value * 10 + (c - '0');
+    }
+    return true;
+}
+
+int main() {
+    string s1, s2;
+    cin >> s1 >> s2;
+
+    int a, b;
+    bool ok1 = tryParse(s1, a);
+    bool ok2 = tryParse(s2, b);
+
+    if (ok1 && ok2) {
+        cout << a + b << endl;
+    } else {
+        if (!ok1)
+            cout << "[error] " << s1 << endl;
+        else
+            cout << s1 << endl;
+
+        if (!ok2)
+            cout << "[error] " << s2 << endl;
+        else
+            cout << s2 << endl;
+    }
+
+    return 0;
+}
