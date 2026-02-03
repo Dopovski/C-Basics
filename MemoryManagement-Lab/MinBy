@@ -1,0 +1,57 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string line;
+    getline(cin, line);
+
+    int command;
+    cin >> command;
+    
+    stringstream counter(line);
+    string temp;
+    int count = 0;
+    while (counter >> temp) {
+        count++;
+    }
+    
+    string* words = new string[count];
+    
+    stringstream ss(line);
+    for (int i = 0; i < count; i++) {
+        ss >> words[i];
+    }
+
+    int index = 0;
+
+    if (command == 1) { 
+        for (int i = 1; i < count; i++) {
+            if (words[i] < words[index]) {
+                index = i;
+            }
+        }
+    } 
+    else if (command == 2) { 
+        for (int i = 1; i < count; i++) {
+            if (words[i].length() < words[index].length()) {
+                index = i;
+            }
+        }
+    } 
+    else if (command == 3) { 
+        for (int i = 1; i < count; i++) {
+            if (words[i].length() > words[index].length()) {
+                index = i;
+            }
+        }
+    }
+
+    cout << words[index];
+    
+    delete[] words;
+
+    return 0;
+}
