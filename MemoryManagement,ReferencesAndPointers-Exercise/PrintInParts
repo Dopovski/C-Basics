@@ -1,0 +1,36 @@
+#include <iostream>
+#include <memory>
+
+using namespace std;
+
+unique_ptr<int[]> readMatrix(istream& in, size_t& rows, size_t& cols) {
+    in >> rows >> cols;
+
+    unique_ptr<int[]> matrix(new int[rows * cols]);
+
+    for (size_t i = 0; i < rows; i++) {
+        for (size_t j = 0; j < cols; j++) {
+            matrix[i * cols + j] = 0;
+            in >> matrix[i * cols + j];
+        }
+    }
+
+    return matrix;
+}
+
+int main() {
+    size_t rows, cols;
+    unique_ptr<int[]> matrix = readMatrix(cin, rows, cols);
+
+    size_t R, C;
+    cin >> R >> C;
+    
+    for (size_t i = 0; i < R; i++) {
+        for (size_t j = 0; j < C; j++) {
+            cout << matrix[i * cols + j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
