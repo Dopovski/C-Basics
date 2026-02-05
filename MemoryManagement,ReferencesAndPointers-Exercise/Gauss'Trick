@@ -1,0 +1,31 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+const size_t maxEle = 100;
+
+int main() {
+    string line;
+    getline(cin, line);
+    istringstream iss(line);
+
+    int* num = new int[maxEle];
+    size_t numRead = 0;
+    int temp;
+
+    while (iss >> temp) {
+        num[numRead++] = temp;
+    }
+
+    for (size_t i = 0; i < numRead / 2; i++) {
+        cout << num[i] + num[numRead - 1 - i] << ' ';
+    }
+
+    if (numRead % 2 == 1) {
+        cout << num[numRead / 2] << ' ';
+    }
+
+    delete[] num;
+    return 0;
+}
