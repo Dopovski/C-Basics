@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+
+int hasMine(int i, int j, char* minefield, int rows, int cols) {
+    if (i >= 0 && i < rows && j >= 0 && j < cols) {
+        return minefield[i * cols + j] == '!' ? 1 : 0;
+    }
+    return 0;
+}
+
+int calculate(int i, int j, char* minefield, int rows, int cols) {
+    return hasMine(i-1, j-1, minefield, rows, cols) +
+           hasMine(i-1, j,   minefield, rows, cols) +
+           hasMine(i-1, j+1, minefield, rows, cols) +
+           hasMine(i,   j-1, minefield, rows, cols) +
+           hasMine(i,   j,   minefield, rows, cols) +
+           hasMine(i,   j+1, minefield, rows, cols) +
+           hasMine(i+1, j-1, minefield, rows, cols) +
+           hasMine(i+1, j,   minefield, rows, cols) +
+           hasMine(i+1, j+1, minefield, rows, cols);
+}
+
+int main() {
+    int rows, cols;
+    cin >> rows >> cols;
+
+    char* minefield = new char[rows * cols];
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cin >> minefield[i * cols + j];
+        }
+    }
+
+    char** result = new char*[rows];
+    for (int i = 0; i < rows; i++)
+        result[i] = new char[cols + 1];
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            result[i][j] = '0' + calculate(i, j, minefield, rows, cols);
+        }
+        result[i][cols] = '\0';
+    }
+
+    for (int i = 0; i < rows; i++) {
+        cout << result[i] << endl;
+    }
+    
+    delete[] minefield;
+    for (int i = 0; i < rows; i++)
+        delete[] result[i];
+    delete[] result;
+
+    return 0;
+}
