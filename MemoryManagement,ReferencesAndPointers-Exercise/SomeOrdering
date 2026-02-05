@@ -1,0 +1,46 @@
+#include <iostream>
+#include <memory>
+#include <cctype>
+
+using namespace std;
+
+const size_t maxSize = 256;
+
+int main() {
+    char* line = new char[maxSize];
+    size_t lineSize = 0;
+
+    while (true) {
+        char temp = cin.get();
+        if (temp == '\n' || temp == '\r' || cin.eof()) {
+            break;
+        }
+
+        if (lineSize >= maxSize - 1) {
+            cerr << "Line too long!" << endl;
+            delete[] line;
+            return 1;
+        }
+
+        line[lineSize++] = temp;
+    }
+
+    line[lineSize] = '\0';
+
+    unique_ptr<char[]> lower(new char[lineSize + 1]);
+    unique_ptr<char[]> caps(new char[lineSize + 1]);
+
+    for (size_t i = 0; i < lineSize; i++) {
+        lower[i] = tolower(line[i]);
+        caps[i]  = toupper(line[i]);
+    }
+
+    lower[lineSize] = '\0';
+    caps[lineSize]  = '\0';
+
+    cout << lower.get() << endl;
+    cout << caps.get() << endl;
+
+    delete[] line;
+    return 0;
+}
