@@ -1,0 +1,31 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+int main() {
+    string line;
+    getline(cin, line);
+    istringstream iss(line);
+
+    int arr[100];
+    int count = 0;
+    int x;
+
+    while (iss >> x) {
+        if (x >= 0) {
+            arr[count++] = x;
+        }
+    }
+
+    if (count == 0) {
+        cout << "empty";
+    } else {
+        for (int i = count - 1; i >= 0; i--) {
+            cout << arr[i];
+            if (i > 0) cout << " ";
+        }
+    }
+
+    return 0;
+}
