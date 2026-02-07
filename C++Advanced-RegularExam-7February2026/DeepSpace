@@ -1,0 +1,91 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+
+using namespace std;
+
+vector<string> readMatrix() {
+    vector<string> matrix;
+    string line;
+    while (true) {
+        getline(cin, line);
+        if (line == "end") {
+            break;
+        }
+        matrix.push_back(line);
+    }
+    return matrix;
+}
+
+void analyzeMatrix(const vector<string>& matrix, int& totalStars, map<char,int>& stars, int& totalPlanets, int& totalAsteroidsComets) {
+    string allowedStars = "OBAFGKMLTY";
+
+    totalStars = 0;
+    totalPlanets = 0;
+    totalAsteroidsComets = 0;
+
+    for (int i = 0; i < matrix.size(); i++) {
+        for (int j = 0; j < matrix[i].size(); j++) {
+            char ch = matrix[i][j];
+
+            if (allowedStars.find(ch) != string::npos) {
+                totalStars++;
+                stars[ch]++;
+            }
+            else if (ch >= '1' && ch <= '9') {
+                totalPlanets += ch - '0';
+            }
+            else if (ch == '#' || ch == '$') {
+                totalAsteroidsComets++;
+            }
+        }
+    }
+}
+
+void printResults(const int totalStars, const map<char,int>& stars, const int totalPlanets, const int totalAsteroidsComets) {
+    cout << "Stars: " << totalStars << endl;
+    for (auto it = stars.begin(); it != stars.end(); it++) {
+        cout << "- " << it->first << ": " << it->second << endl;
+    }
+
+    cout << "Planets: " << totalPlanets << endl;
+
+    cout << "Asteroids/comets: " << totalAsteroidsComets << endl;
+}
+
+
+void replaceSymbols(vector<string>& matrix, const string& replaceWord) {
+    for (int i = 0; i < matrix.size(); i++) {
+        for (int j = 0; j < matrix[i].size(); j++) {
+            if (replaceWord.find(matrix[i][j]) != string::npos) {
+                matrix[i][j] = '+';
+            }
+        }
+    }
+}
+
+void printMatrix(const vector<string>& matrix) {
+    for (int i = 0; i < matrix.size(); i++) {
+        cout << matrix[i] << endl;
+    }
+}
+
+int main() {
+    vector<string> matrix = readMatrix();
+
+    string replaceWord;
+    getline(cin, replaceWord);
+
+    map<char,int> stars;
+    int totalStars, totalPlanets, totalAsteroidsComets;
+    analyzeMatrix(matrix, totalStars, stars, totalPlanets, totalAsteroidsComets);
+
+    printResults(totalStars, stars, totalPlanets, totalAsteroidsComets);
+
+    replaceSymbols(matrix, replaceWord);
+
+    printMatrix(matrix);
+
+    return 0;
+}
