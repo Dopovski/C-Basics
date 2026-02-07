@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+#include <stack>
+#include <queue>
+
+using namespace std;
+
+int main() {
+    stack<string> flowA;
+    queue<string> flowB;
+
+    string name;
+    char type;
+
+    while (true) {
+        cin >> name;
+
+        if (name == "end") {
+            break;
+        }
+
+        cin >> type;
+
+        if (type == 'A') {
+            flowA.push(name);
+        } else if (type == 'B') {
+            flowB.push(name);
+        }
+    }
+
+    cout << "Flow A:" << endl;
+
+    if (flowA.empty()) {
+        cout << "<EMPTY>" << endl;
+    } else {
+        while (!flowA.empty()) {
+            cout << flowA.top();
+            flowA.pop();
+            if (!flowA.empty()) {
+                cout << ", ";
+            }
+        }
+        cout << endl;
+    }
+
+    cout << "Flow B:" << endl;
+
+    if (flowB.empty()) {
+        cout << "<EMPTY>" << endl;
+    } else {
+        while (!flowB.empty()) {
+            cout << flowB.front();
+            flowB.pop();
+            if (!flowB.empty()) {
+                cout << ", ";
+            }
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
