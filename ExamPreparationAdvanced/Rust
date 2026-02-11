@@ -1,0 +1,61 @@
+#include <iostream>
+#include <array>
+
+using namespace std;
+
+const int SIZE = 10;
+
+char RUST = '!';
+char NORUST = '#';
+
+void setRust(int i, int j, array<array<char, SIZE>, SIZE> &matrix) {
+    if (i >= 0 && i < SIZE && j >= 0 && j < SIZE) {
+        if (matrix[i][j] == '.') {
+            matrix[i][j] = '!';
+        }
+    }
+}
+
+void apply(array<array<char, SIZE>, SIZE> &matrix) {
+    array<array<char, SIZE>, SIZE> old = matrix;
+
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if (old[i][j] == RUST) {
+                setRust(i - 1, j, matrix);
+                setRust(i + 1, j, matrix);
+                setRust(i, j - 1, matrix);
+                setRust(i, j + 1, matrix);
+            }
+        }
+    }
+}
+
+void printMatrix(const array<array<char, SIZE>, SIZE> &matrix) {
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            cout << matrix[i][j];
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    array<array<char, SIZE>, SIZE> matrix;
+
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    int tick;
+    cin >> tick;
+
+    while (tick--) {
+        apply(matrix);
+    }
+
+    printMatrix(matrix);
+    return 0;
+}
