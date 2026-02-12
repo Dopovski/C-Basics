@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+vector<string> names;
+vector<string> locations;
+
+void seeLocation(int i) {
+    cout << names[i] << "," << locations[i] << endl;
+}
+
+void printLocation(const string &searchedName) {
+    for (int i = 0; i < names.size(); i++) {
+        if (names[i] == searchedName) {
+            seeLocation(i);
+            return;
+        }
+    }
+}
+
+void queryLocation(const string &searchedLocation) {
+
+    istringstream iss(searchedLocation);
+    string lat, ltt;
+    iss >> lat >> ltt;
+
+    string formatted = lat + "," + ltt;
+
+    for (int i = 0; i < locations.size(); i++) {
+        if (locations[i] == formatted) {
+            seeLocation(i);
+        }
+    }
+}
+
+int main() {
+
+    while (true) {
+        string line;
+        getline(cin, line);
+        if (line == ".") break;
+
+        istringstream iss(line);
+        string name, location;
+
+        getline(iss, name, ',');
+        getline(iss, location);
+
+        names.push_back(name);
+        locations.push_back(location);
+    }
+
+    while (true) {
+        string line;
+        getline(cin, line);
+        if (line == ".") break;
+
+        if (isalpha(line[0])) {
+            printLocation(line);
+        } else {
+            queryLocation(line);
+        }
+    }
+
+    return 0;
+}
